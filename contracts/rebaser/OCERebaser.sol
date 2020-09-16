@@ -5,10 +5,10 @@ import "../lib/SafeERC20.sol";
 import "../lib/SafeMath.sol";
 import '../lib/IUniswapV2Pair.sol';
 import "../lib/UniswapV2OracleLibrary.sol";
-import "../token/YAMTokenInterface.sol";
+import "../token/OCETokenInterface.sol";
 
 
-contract YAMRebaser {
+contract OCERebaser {
 
     using SafeMath for uint256;
 
@@ -24,7 +24,7 @@ contract YAMRebaser {
     }
 
     struct UniVars {
-      uint256 yamsToUni;
+      uint256 ocesToUni;
       uint256 amountFromReserves;
       uint256 mintToReserves;
     }
@@ -52,7 +52,7 @@ contract YAMRebaser {
     /**
      * @notice Sets the reserve contract
      */
-    event TreasuryIncreased(uint256 reservesAdded, uint256 yamsSold, uint256 yamsFromReserves, uint256 yamsToReserves);
+    event TreasuryIncreased(uint256 reservesAdded, uint256 ocesSold, uint256 ocesFromReserves, uint256 ocesToReserves);
 
 
     /**
@@ -116,8 +116,8 @@ contract YAMRebaser {
     /// @notice Time of TWAP initialization
     uint256 public timeOfTWAPInit;
 
-    /// @notice YAM token address
-    address public yamAddress;
+    /// @notice OCE token address
+    address public oceAddress;
 
     /// @notice reserve token
     address public reserveToken;
@@ -125,7 +125,7 @@ contract YAMRebaser {
     /// @notice Reserves vault contract
     address public reservesContract;
 
-    /// @notice pair for reserveToken <> YAM
+    /// @notice pair for reserveToken <> OCE
     address public uniswap_pair;
 
     /// @notice last TWAP update time
@@ -141,11 +141,11 @@ contract YAMRebaser {
     /// @notice the maximum slippage factor when buying reserve token
     uint256 public maxSlippageFactor;
 
-    /// @notice Whether or not this token is first in uniswap YAM<>Reserve pair
+    /// @notice Whether or not this token is first in uniswap OCE<>Reserve pair
     bool public isToken0;
 
     constructor(
-        address yamAddress_,
+        address oceAddress_,
         address reserveToken_,
         address uniswap_factory,
         address reservesContract_
@@ -155,15 +155,15 @@ contract YAMRebaser {
           minRebaseTimeIntervalSec = 12 hours;
           rebaseWindowOffsetSec = 28800; // 8am/8pm UTC rebases
           reservesContract = reservesContract_;
-          (address token0, address token1) = sortTokens(yamAddress_, reserveToken_);
+          (address token0, address token1) = sortTokens(oceAddress_, reserveToken_);
 
           // used for interacting with uniswap
-          if (token0 == yamAddress_) {
+          if (token0 == oceAddress_) {
               isToken0 = true;
           } else {
               isToken0 = false;
           }
-          // uniswap YAM<>Reserve pair
+          // uniswap OCE<>Reserve pair
           uniswap_pair = pairFor(uniswap_factory, token0, token1);
 
           // Reserves contract is mutable
@@ -172,7 +172,7 @@ contract YAMRebaser {
           // Reserve token is not mutable. Must deploy a new rebaser to update it
           reserveToken = reserveToken_;
 
-          yamAddress = yamAddress_;
+          oceAddress = oceAddress_;
 
           // target 10% slippage
           // 5.4%
@@ -330,14 +330,14 @@ contract YAMRebaser {
         // Apply the Dampening factor.
         indexDelta = indexDelta.div(rebaseLag);
 
-        YAMTokenInterface yam = YAMTokenInterface(yamAddress);
+        OCETokenInterface oce = OCETokenInterface(oceAddress);
 
         if (positive) {
-            require(yam.yamsScalingFactor().mul(uint256(10**18).add(indexDelta)).div(10**18) < yam.maxScalingFactor(), "new scaling factor will be too big");
+            require(oce.ocesScalingFactor().mul(uint256(10**18).add(indexDelta)).div(10**18) < oce.maxScalingFactor(), "new scaling factor will be too big");
         }
 
 
-        uint256 currSupply = yam.totalSupply();
+        uint256 currSupply = oce.totalSupply();
 
         uint256 mintAmount;
         // reduce indexDelta to account for minting
@@ -348,8 +348,8 @@ contract YAMRebaser {
         }
 
         // rebase
-        uint256 supplyAfterRebase = yam.rebase(epoch, indexDelta, positive);
-        assert(yam.yamsScalingFactor() <= yam.maxScalingFactor());
+        uint256 supplyAfterRebase = oce.rebase(epoch, indexDelta, positive);
+        assert(oce.ocesScalingFactor() <= oce.maxScalingFactor());
 
         // perform actions after rebase
         afterRebase(mintAmount, offPegPerc);
@@ -370,33 +370,33 @@ contract YAMRebaser {
         require(sender == address(this), "bad origin");
         (UniVars memory uniVars) = abi.decode(data, (UniVars));
 
-        YAMTokenInterface yam = YAMTokenInterface(yamAddress);
+        OCETokenInterface oce = OCETokenInterface(oceAddress);
 
         if (uniVars.amountFromReserves > 0) {
             // transfer from reserves and mint to uniswap
-            yam.transferFrom(reservesContract, uniswap_pair, uniVars.amountFromReserves);
-            if (uniVars.amountFromReserves < uniVars.yamsToUni) {
-                // if the amount from reserves > yamsToUni, we have fully paid for the yCRV tokens
+            oce.transferFrom(reservesContract, uniswap_pair, uniVars.amountFromReserves);
+            if (uniVars.amountFromReserves < uniVars.ocesToUni) {
+                // if the amount from reserves > ocesToUni, we have fully paid for the yCRV tokens
                 // thus this number would be 0 so no need to mint
-                yam.mint(uniswap_pair, uniVars.yamsToUni.sub(uniVars.amountFromReserves));
+                oce.mint(uniswap_pair, uniVars.ocesToUni.sub(uniVars.amountFromReserves));
             }
         } else {
             // mint to uniswap
-            yam.mint(uniswap_pair, uniVars.yamsToUni);
+            oce.mint(uniswap_pair, uniVars.ocesToUni);
         }
 
         // mint unsold to mintAmount
         if (uniVars.mintToReserves > 0) {
-            yam.mint(reservesContract, uniVars.mintToReserves);
+            oce.mint(reservesContract, uniVars.mintToReserves);
         }
 
         // transfer reserve token to reserves
         if (isToken0) {
             SafeERC20.safeTransfer(IERC20(reserveToken), reservesContract, amount1);
-            emit TreasuryIncreased(amount1, uniVars.yamsToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
+            emit TreasuryIncreased(amount1, uniVars.ocesToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
         } else {
             SafeERC20.safeTransfer(IERC20(reserveToken), reservesContract, amount0);
-            emit TreasuryIncreased(amount0, uniVars.yamsToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
+            emit TreasuryIncreased(amount0, uniVars.ocesToUni, uniVars.amountFromReserves, uniVars.mintToReserves);
         }
     }
 
@@ -408,21 +408,21 @@ contract YAMRebaser {
     {
         UniswapPair pair = UniswapPair(uniswap_pair);
 
-        YAMTokenInterface yam = YAMTokenInterface(yamAddress);
+        OCETokenInterface oce = OCETokenInterface(oceAddress);
 
         // get reserves
         (uint256 token0Reserves, uint256 token1Reserves, ) = pair.getReserves();
 
-        // check if protocol has excess yam in the reserve
-        uint256 excess = yam.balanceOf(reservesContract);
+        // check if protocol has excess oce in the reserve
+        uint256 excess = oce.balanceOf(reservesContract);
 
 
         uint256 tokens_to_max_slippage = uniswapMaxSlippage(token0Reserves, token1Reserves, offPegPerc);
 
         UniVars memory uniVars = UniVars({
-          yamsToUni: tokens_to_max_slippage, // how many yams uniswap needs
-          amountFromReserves: excess, // how much of yamsToUni comes from reserves
-          mintToReserves: 0 // how much yams protocol mints to reserves
+          ocesToUni: tokens_to_max_slippage, // how many oces uniswap needs
+          amountFromReserves: excess, // how much of ocesToUni comes from reserves
+          mintToReserves: 0 // how much oces protocol mints to reserves
         });
 
         // tries to sell all mint + excess
@@ -436,7 +436,7 @@ contract YAMRebaser {
 
                 // can handle selling all of reserves and mint
                 uint256 buyTokens = getAmountOut(mintAmount + excess, token0Reserves, token1Reserves);
-                uniVars.yamsToUni = mintAmount + excess;
+                uniVars.ocesToUni = mintAmount + excess;
                 uniVars.amountFromReserves = excess;
                 // call swap using entire mint amount and excess; mint 0 to reserves
                 pair.swap(0, buyTokens, address(this), abi.encode(uniVars));
@@ -445,7 +445,7 @@ contract YAMRebaser {
                     // uniswap can handle entire reserves
                     uint256 buyTokens = getAmountOut(tokens_to_max_slippage, token0Reserves, token1Reserves);
 
-                    // swap up to slippage limit, taking entire yam reserves, and minting part of total
+                    // swap up to slippage limit, taking entire oce reserves, and minting part of total
                     uniVars.mintToReserves = mintAmount.sub((tokens_to_max_slippage - excess));
                     pair.swap(0, buyTokens, address(this), abi.encode(uniVars));
                 } else {
@@ -462,7 +462,7 @@ contract YAMRebaser {
             if (tokens_to_max_slippage > mintAmount.add(excess)) {
                 // can handle all of reserves and mint
                 uint256 buyTokens = getAmountOut(mintAmount + excess, token1Reserves, token0Reserves);
-                uniVars.yamsToUni = mintAmount + excess;
+                uniVars.ocesToUni = mintAmount + excess;
                 uniVars.amountFromReserves = excess;
                 // call swap using entire mint amount and excess; mint 0 to reserves
                 pair.swap(buyTokens, 0, address(this), abi.encode(uniVars));
@@ -471,9 +471,9 @@ contract YAMRebaser {
                     // uniswap can handle entire reserves
                     uint256 buyTokens = getAmountOut(tokens_to_max_slippage, token1Reserves, token0Reserves);
 
-                    // swap up to slippage limit, taking entire yam reserves, and minting part of total
+                    // swap up to slippage limit, taking entire oce reserves, and minting part of total
                     uniVars.mintToReserves = mintAmount.sub( (tokens_to_max_slippage - excess));
-                    // swap up to slippage limit, taking entire yam reserves, and minting part of total
+                    // swap up to slippage limit, taking entire oce reserves, and minting part of total
                     pair.swap(buyTokens, 0, address(this), abi.encode(uniVars));
                 } else {
                     // uniswap cant handle all of excess

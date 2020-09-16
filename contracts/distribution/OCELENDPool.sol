@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at Etherscan.io on 2020-07-17
-*/
-
 /*
    ____            __   __        __   _
   / __/__ __ ___  / /_ / /  ___  / /_ (_)__ __
@@ -9,7 +5,7 @@
 /___/ \_, //_//_/\__//_//_/\__/ \__//_/ /_\_\
      /___/
 
-* Synthetix: YAMRewards.sol
+* Synthetix: OCERewards.sol
 *
 * Docs: https://docs.synthetix.io/
 *
@@ -592,8 +588,8 @@ contract IRewardDistributionRecipient is Ownable {
 pragma solidity ^0.5.0;
 
 
-interface YAM {
-    function yamsScalingFactor() external returns (uint256);
+interface OCE {
+    function ocesScalingFactor() external returns (uint256);
 }
 
 
@@ -628,8 +624,8 @@ contract LPTokenWrapper {
     }
 }
 
-contract YAMLENDPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public yam = IERC20(0x0e2298E3B3390e3b945a5456fBf59eCc3f55DA16);
+contract OCELENDPool is LPTokenWrapper, IRewardDistributionRecipient {
+    IERC20 public oce = IERC20(0x0e2298E3B3390e3b945a5456fBf59eCc3f55DA16);
     uint256 public constant DURATION = 625000; // ~7 1/4 days
 
     uint256 public starttime = 1597172400; // 2020-08-11 19:00:00 (UTC UTC +00:00)
@@ -708,9 +704,9 @@ contract YAMLENDPool is LPTokenWrapper, IRewardDistributionRecipient {
         uint256 reward = earned(msg.sender);
         if (reward > 0) {
             rewards[msg.sender] = 0;
-            uint256 scalingFactor = YAM(address(yam)).yamsScalingFactor();
+            uint256 scalingFactor = OCE(address(oce)).ocesScalingFactor();
             uint256 trueReward = reward.mul(scalingFactor).div(10**18);
-            yam.safeTransfer(msg.sender, trueReward);
+            oce.safeTransfer(msg.sender, trueReward);
             emit RewardPaid(msg.sender, trueReward);
         }
     }

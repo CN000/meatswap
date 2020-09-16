@@ -1,9 +1,9 @@
 pragma solidity 0.5.17;
 
-/* import "./YAMTokenInterface.sol"; */
-import "./YAMGovernance.sol";
+/* import "./OCETokenInterface.sol"; */
+import "./OCEGovernance.sol";
 
-contract YAMToken is YAMGovernanceToken {
+contract YAMToken is OCEGovernanceToken {
     // Modifiers
     modifier onlyGov() {
         require(msg.sender == gov);
@@ -90,7 +90,7 @@ contract YAMToken is YAMGovernanceToken {
       require(yamsScalingFactor <= _maxScalingFactor(), "max scaling factor too low");
 
       // add balance
-      _yamBalances[to] = _yamBalances[to].add(yamValue);
+      _oceBalances[to] = _oceBalances[to].add(yamValue);
 
       // add delegates to the minter
       _moveDelegates(address(0), _delegates[to], yamValue);
@@ -119,10 +119,10 @@ contract YAMToken is YAMGovernanceToken {
         uint256 yamValue = value.mul(internalDecimals).div(yamsScalingFactor);
 
         // sub from balance of sender
-        _yamBalances[msg.sender] = _yamBalances[msg.sender].sub(yamValue);
+        _oceBalances[msg.sender] = _oceBalances[msg.sender].sub(yamValue);
 
         // add to balance of receiver
-        _yamBalances[to] = _yamBalances[to].add(yamValue);
+        _oceBalances[to] = _oceBalances[to].add(yamValue);
         emit Transfer(msg.sender, to, value);
 
         _moveDelegates(_delegates[msg.sender], _delegates[to], yamValue);
@@ -147,8 +147,8 @@ contract YAMToken is YAMGovernanceToken {
         uint256 yamValue = value.mul(internalDecimals).div(yamsScalingFactor);
 
         // sub from from
-        _yamBalances[from] = _yamBalances[from].sub(yamValue);
-        _yamBalances[to] = _yamBalances[to].add(yamValue);
+        _oceBalances[from] = _oceBalances[from].sub(yamValue);
+        _oceBalances[to] = _oceBalances[to].add(yamValue);
         emit Transfer(from, to, value);
 
         _moveDelegates(_delegates[from], _delegates[to], yamValue);
@@ -164,7 +164,7 @@ contract YAMToken is YAMGovernanceToken {
       view
       returns (uint256)
     {
-      return _yamBalances[who].mul(yamsScalingFactor).div(internalDecimals);
+      return _oceBalances[who].mul(yamsScalingFactor).div(internalDecimals);
     }
 
     /** @notice Currently returns the internal storage amount
@@ -176,7 +176,7 @@ contract YAMToken is YAMGovernanceToken {
       view
       returns (uint256)
     {
-      return _yamBalances[who];
+      return _oceBalances[who];
     }
 
     /**
@@ -366,7 +366,7 @@ contract YAM is YAMToken {
         initSupply = initSupply_.mul(10**24/ (BASE));
         totalSupply = initSupply_;
         yamsScalingFactor = BASE;
-        _yamBalances[initial_owner] = initSupply_.mul(10**24 / (BASE));
+        _oceBalances[initial_owner] = initSupply_.mul(10**24 / (BASE));
 
         // owner renounces ownership after deployment as they need to set
         // rebaser and incentivizer

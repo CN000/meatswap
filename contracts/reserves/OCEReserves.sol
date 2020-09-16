@@ -2,11 +2,11 @@ pragma solidity 0.5.17;
 
 import "../lib/IERC20.sol";
 import "../lib/SafeERC20.sol";
-import "../token/YAMTokenInterface.sol";
+import "../token/OCETokenInterface.sol";
 
-contract YAMReserves {
+contract OCEReserves {
 
-    // Token that serves as a reserve for YAM
+    // Token that serves as a reserve for OCE
     address public reserveToken;
 
     address public gov;
@@ -15,7 +15,7 @@ contract YAMReserves {
 
     address public rebaser;
 
-    address public yamAddress;
+    address public oceAddress;
 
     /*** Gov Events ***/
 
@@ -42,12 +42,12 @@ contract YAMReserves {
 
     constructor(
         address reserveToken_,
-        address yamAddress_
+        address oceAddress_
     )
         public
     {
         reserveToken = reserveToken_;
-        yamAddress = yamAddress_;
+        oceAddress = oceAddress_;
         gov = msg.sender;
     }
 
@@ -56,9 +56,9 @@ contract YAMReserves {
         onlyGov
     {
         address oldRebaser = rebaser;
-        YAMTokenInterface(yamAddress).decreaseAllowance(oldRebaser, uint256(-1));
+        OCETokenInterface(oceAddress).decreaseAllowance(oldRebaser, uint256(-1));
         rebaser = rebaser_;
-        YAMTokenInterface(yamAddress).approve(rebaser_, uint256(-1));
+        OCETokenInterface(oceAddress).approve(rebaser_, uint256(-1));
         emit NewRebaser(oldRebaser, rebaser_);
     }
 

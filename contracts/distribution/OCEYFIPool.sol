@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at Etherscan.io on 2020-07-17
-*/
-
 /*
    ____            __   __        __   _
   / __/__ __ ___  / /_ / /  ___  / /_ (_)__ __
@@ -9,7 +5,7 @@
 /___/ \_, //_//_/\__//_//_/\__/ \__//_/ /_\_\
      /___/
 
-* Synthetix: YAMRewards.sol
+* Synthetix: OCERewards.sol
 *
 * Docs: https://docs.synthetix.io/
 *
@@ -592,17 +588,16 @@ contract IRewardDistributionRecipient is Ownable {
 pragma solidity ^0.5.0;
 
 
-interface YAM {
-    function yamsScalingFactor() external returns (uint256);
+interface OCE {
+    function ocesScalingFactor() external returns (uint256);
 }
-
 
 
 contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public weth = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IERC20 public yfi = IERC20(0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -618,18 +613,18 @@ contract LPTokenWrapper {
     function stake(uint256 amount) public {
         _totalSupply = _totalSupply.add(amount);
         _balances[msg.sender] = _balances[msg.sender].add(amount);
-        weth.safeTransferFrom(msg.sender, address(this), amount);
+        yfi.safeTransferFrom(msg.sender, address(this), amount);
     }
 
     function withdraw(uint256 amount) public {
         _totalSupply = _totalSupply.sub(amount);
         _balances[msg.sender] = _balances[msg.sender].sub(amount);
-        weth.safeTransfer(msg.sender, amount);
+        yfi.safeTransfer(msg.sender, amount);
     }
 }
 
-contract YAMETHPool is LPTokenWrapper, IRewardDistributionRecipient {
-    IERC20 public yam = IERC20(0x0e2298E3B3390e3b945a5456fBf59eCc3f55DA16);
+contract OCEYFIPool is LPTokenWrapper, IRewardDistributionRecipient {
+    IERC20 public oce                = IERC20(0x0e2298E3B3390e3b945a5456fBf59eCc3f55DA16);
     uint256 public constant DURATION = 625000; // ~7 1/4 days
 
     uint256 public starttime = 1597172400; // 2020-08-11 19:00:00 (UTC UTC +00:00)
@@ -645,7 +640,7 @@ contract YAMETHPool is LPTokenWrapper, IRewardDistributionRecipient {
     event Withdrawn(address indexed user, uint256 amount);
     event RewardPaid(address indexed user, uint256 reward);
 
-    modifier checkStart() {
+    modifier checkStart(){
         require(block.timestamp >= starttime,"not start");
         _;
     }
@@ -708,9 +703,9 @@ contract YAMETHPool is LPTokenWrapper, IRewardDistributionRecipient {
         uint256 reward = earned(msg.sender);
         if (reward > 0) {
             rewards[msg.sender] = 0;
-            uint256 scalingFactor = YAM(address(yam)).yamsScalingFactor();
+            uint256 scalingFactor = OCE(address(oce)).ocesScalingFactor();
             uint256 trueReward = reward.mul(scalingFactor).div(10**18);
-            yam.safeTransfer(msg.sender, trueReward);
+            oce.safeTransfer(msg.sender, trueReward);
             emit RewardPaid(msg.sender, trueReward);
         }
     }
