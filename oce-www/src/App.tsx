@@ -13,7 +13,7 @@ import TopBar from './components/TopBar'
 
 import FarmsProvider from './contexts/Farms'
 import ModalsProvider from './contexts/Modals'
-import YamProvider from './contexts/YamProvider'
+import YamProvider from './contexts/OceProvider'
 import TransactionProvider from './contexts/Transactions'
 
 import useModal from './hooks/useModal'
@@ -83,7 +83,6 @@ const Providers: React.FC = ({ children }) => {
 }
 
 const Disclaimer: React.FC = () => {
-
   const markSeen = useCallback(() => {
     localStorage.setItem('disclaimer', 'seen')
   }, [])
