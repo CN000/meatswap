@@ -158,21 +158,6 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "mkr",
-      "outputs": [
-        {
-          "internalType": "contract IERC20",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
       "name": "owner",
       "outputs": [
         {
@@ -374,6 +359,21 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "yfi",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "lastTimeRewardApplicable",
       "outputs": [
         {
@@ -491,15 +491,15 @@
       "links": [
         {}
       ],
-      "address": "0xcFe1E539AcB2D489a651cA011a6eB93d32f97E23",
-      "transactionHash": "0xa509530fe862ba42bf84f4c05fb4231dd57b244771d9fb3a8687ec34d13ffbaa"
+      "address": "0xc5B6488c7D5BeD173B76Bd5DCA712f45fB9EaEaB",
+      "transactionHash": "0xe50e34e710602cb8f78247bf2b66efb61c8ca33b9911e59229457067e3c29554"
     },
     "1001": {
       "links": [
         {}
       ],
-      "address": "0x9a0846911E2c6EDb06BEa20E6FEf9bBbf37e4119",
-      "transactionHash": "0x566295fff11a52448b3ce0820dbefbd6b479d2e7b15e918a7572136a7cf61fec"
+      "address": "0x86aD8caa66c407d7485b05584B9Ac9A7e2371275",
+      "transactionHash": "0x2beff36d157dfdcf66c59a739893055e30c8d41d09bc8ce90989aaf85d893973"
     }
   }
 }

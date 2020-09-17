@@ -16,8 +16,8 @@ const Home: React.FC = () => {
     <Page>
       <PageHeader
         icon="🗣"
-        subtitle="Vote on the future of the YAM protocol."
-        title="YAMV2 governance is live."
+        subtitle="Vote on the future of the OCE protocol."
+        title="OCEV2 governance is live."
       />
 
       <Container>
@@ -25,9 +25,9 @@ const Home: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
         }}>
-          <Button href="https://snapshot.page/#/yam" text="View Proposals" />
+          <Button href="https://snapshot.page/#/oce" text="View Proposals" />
           <Spacer />
-          <Button href="https://forum.yam.finance" text="Governance Forum" />
+          <Button href="https://forum.oce.finance" text="Governance Forum" />
         </div>
         <Spacer size="lg" />
         <Balances />

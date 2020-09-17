@@ -25,6 +25,7 @@ export const INTEGERS = {
 export const addressMap = {
   uniswapFactory   : "0xc0a47dFe034B400B47bDaD5FecDa2621de6c4d95",
   uniswapFactoryV2 : "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+  USDT             : "0xdAC17F958D2ee523a2206206994597C13D831ec7",  // USDT
   YFI              : "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
   YCRV             : "0xdF5e0e81Dff6FAF3A7e52BA697820c5e32D806A8",
   UNIAmpl          : "0xc5be99a02c6857f9eac67bbce58df5572498f40c",
@@ -35,5 +36,5 @@ export const addressMap = {
   SNX              : "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
   COMP             : "0xc00e94Cb662C3520282E6f5717214004A7f26888",
   LEND             : "0x80fB784B7eD66730e8b1DBd9820aFD29931aab03",
-  YAMYCRV          : "0x2C7a51A357d5739C5C74Bf3C96816849d2c9F726",
+  OCEYCRV          : "0x2C7a51A357d5739C5C74Bf3C96816849d2c9F726",
 }

@@ -4,32 +4,32 @@ import * as Types from "./types.js";
 import { SUBTRACT_GAS_LIMIT, addressMap } from './constants.js';
 
 import ERC20Json from '../clean_build/contracts/IERC20.json';
-import YAMv2Json from '../clean_build/contracts/YAMv2.json';
-import YAMv2MigrationJson from '../clean_build/contracts/YAMv2Migration.json';
-import YAMJson from '../clean_build/contracts/YAMDelegator.json';
-import YAMRebaserJson from '../clean_build/contracts/YAMRebaser.json';
-import YAMReservesJson from '../clean_build/contracts/YAMReserves.json';
-import YAMGovJson from '../clean_build/contracts/GovernorAlpha.json';
-import YAMTimelockJson from '../clean_build/contracts/Timelock.json';
+import OCEv2Json from '../clean_build/contracts/OCEv2.json';
+import OCEv2MigrationJson from '../clean_build/contracts/OCEv2Migration.json';
+import OCEJson from '../clean_build/contracts/OCEDelegator.json';
+import OCERebaserJson from '../clean_build/contracts/OCERebaser.json';
+import OCEReservesJson from '../clean_build/contracts/OCEReserves.json';
+import OCEGovJson from '../clean_build/contracts/GovernorAlpha.json';
+import OCETimelockJson from '../clean_build/contracts/Timelock.json';
 import WETHJson from './weth.json';
 import SNXJson from './snx.json';
 import UNIFactJson   from './unifact2.json';
 import UNIPairJson   from './uni2.json';
 import UNIRouterJson from './uniR.json';
 
-import WETHPoolJson from '../clean_build/contracts/YAMETHPool.json';
-import AMPLPoolJson from '../clean_build/contracts/YAMAMPLPool.json';
-import YFIPoolJson  from '../clean_build/contracts/YAMYFIPool.json';
+import WETHPoolJson from '../clean_build/contracts/OCEETHPool.json';
+import AMPLPoolJson from '../clean_build/contracts/OCEAMPLPool.json';
+import YFIPoolJson  from '../clean_build/contracts/OCEYFIPool.json';
 
-import MKRPoolJson  from '../clean_build/contracts/YAMMKRPool.json';
-import LENDPoolJson from '../clean_build/contracts/YAMLENDPool.json';
-import COMPPoolJson from '../clean_build/contracts/YAMCOMPPool.json';
-import SNXPoolJson  from '../clean_build/contracts/YAMSNXPool.json';
-import LINKPoolJson from '../clean_build/contracts/YAMLINKPool.json';
-import USDTPoolJson from '../clean_build/contracts/YAMUSDTPool.json';
+import MKRPoolJson  from '../clean_build/contracts/OCEMKRPool.json';
+import LENDPoolJson from '../clean_build/contracts/OCELENDPool.json';
+import COMPPoolJson from '../clean_build/contracts/OCECOMPPool.json';
+import SNXPoolJson  from '../clean_build/contracts/OCESNXPool.json';
+import LINKPoolJson from '../clean_build/contracts/OCELINKPool.json';
+import USDTPoolJson from '../clean_build/contracts/OCEUSDTPool.json';
 
 
-import IncJson from '../clean_build/contracts/YAMIncentivizer.json';
+import IncJson from '../clean_build/contracts/OCEIncentivizer.json';
 
 export class Contracts {
   constructor(
@@ -51,7 +51,7 @@ export class Contracts {
     this.yfi        = new this.web3.eth.Contract(ERC20Json.abi);
     this.UNIAmpl    = new this.web3.eth.Contract(ERC20Json.abi);
     this.ycrv       = new this.web3.eth.Contract(ERC20Json.abi);
-    this.yam        = new this.web3.eth.Contract(YAMJson.abi);
+    this.oce        = new this.web3.eth.Contract(OceJson.abi);
 
     this.yfi_pool  = new this.web3.eth.Contract(YFIPoolJson.abi);
     this.eth_pool  = new this.web3.eth.Contract(WETHPoolJson.abi);
@@ -72,19 +72,19 @@ export class Contracts {
     this.lend = new this.web3.eth.Contract(ERC20Json.abi);
     this.snx  = new this.web3.eth.Contract(ERC20Json.abi);
     this.mkr  = new this.web3.eth.Contract(ERC20Json.abi);
-    this.yam_ycrv_uni_lp = new this.web3.eth.Contract(ERC20Json.abi);
+    this.oce_ycrv_uni_lp = new this.web3.eth.Contract(ERC20Json.abi);
 
     this.erc20 = new this.web3.eth.Contract(ERC20Json.abi);
     this.pool = new this.web3.eth.Contract(LENDPoolJson.abi);
 
 
-    this.yamV2 = new this.web3.eth.Contract(YAMv2Json.abi);
-    this.yamV2migration = new this.web3.eth.Contract(YAMv2MigrationJson.abi);
+    this.oceV2 = new this.web3.eth.Contract(OCEv2Json.abi);
+    this.oceV2migration = new this.web3.eth.Contract(OCEv2MigrationJson.abi);
 
-    this.rebaser = new this.web3.eth.Contract(YAMRebaserJson.abi);
-    this.reserves = new this.web3.eth.Contract(YAMReservesJson.abi);
-    this.gov = new this.web3.eth.Contract(YAMGovJson.abi);
-    this.timelock = new this.web3.eth.Contract(YAMTimelockJson.abi);
+    this.rebaser = new this.web3.eth.Contract(OCERebaserJson.abi);
+    this.reserves = new this.web3.eth.Contract(OCEReservesJson.abi);
+    this.gov = new this.web3.eth.Contract(OCEGovJson.abi);
+    this.timelock = new this.web3.eth.Contract(OCETimelockJson.abi);
     this.weth = new this.web3.eth.Contract(WETHJson);
     this.setProvider(provider, networkId);
     this.setDefaultAccount(this.web3.eth.defaultAccount);
@@ -95,29 +95,30 @@ export class Contracts {
     provider,
     networkId
   ) {
-    this.yam.setProvider(provider);
+    this.oce.setProvider(provider);
     this.rebaser.setProvider(provider);
     this.reserves.setProvider(provider);
     this.gov.setProvider(provider);
     this.timelock.setProvider(provider);
 
     const contracts = [
-      { contract: this.yam,           json: YAMJson },
-      { contract: this.rebaser,       json: YAMRebaserJson },
-      { contract: this.reserves,      json: YAMReservesJson },
-      { contract: this.gov,           json: YAMGovJson },
-      { contract: this.timelock,      json: YAMTimelockJson },
+      { contract: this.oce,           json: OCEJson },
+      { contract: this.rebaser,       json: OCERebaserJson },
+      { contract: this.reserves,      json: OCEReservesJson },
+      { contract: this.gov,           json: OCEGovJson },
+      { contract: this.timelock,      json: OCETimelockJson },
       { contract: this.ycrv_pool,     json: IncJson },
     //  { contract: this.eth_pool,      json: WETHPoolJson },
       { contract: this.yfi_pool,      json: YFIPoolJson },
+      { contract: this.usdt_pool,      json: USDTPoolJson },
      // { contract: this.ampl_pool,     json: AMPLPoolJson },
     //  { contract: this.snx_pool,      json: SNXPoolJson },
     //  { contract: this.mkr_pool,      json: MKRPoolJson },
     //  { contract: this.lend_pool,     json: LENDPoolJson },
     //  { contract: this.link_pool,     json: LINKPoolJson },
     //  { contract: this.comp_pool,     json: COMPPoolJson },
-        { contract: this.yamV2,         json: YAMv2Json },
-        { contract: this.yamV2migration,json: YAMv2MigrationJson },
+        { contract: this.oceV2,         json: OCEv2Json },
+        { contract: this.oceV2migration,json: OCEv2MigrationJson },
     ]
 
     contracts.forEach(contract => this.setContractProvider(
@@ -139,7 +140,7 @@ export class Contracts {
     this.UNIAmpl.options.address         = addressMap["UNIAmpl"];
     this.uni_fact.options.address        = addressMap["uniswapFactoryV2"];
     this.uni_router.options.address      = addressMap["UNIRouter"];
-    this.yam_ycrv_uni_lp.options.address = addressMap["YAMYCRV"];
+    this.oce_ycrv_uni_lp.options.address = addressMap["OCEYCRV"];
 
     this.pools = [
       {"tokenAddr": this.yfi.options.address,     "poolAddr": this.yfi_pool.options.address},
@@ -158,7 +159,7 @@ export class Contracts {
   ) {
     this.yfi.options.from = account;
     this.ycrv.options.from = account;
-    this.yam.options.from = account;
+    this.oce.options.from = account;
     this.weth.options.from = account;
   }
 

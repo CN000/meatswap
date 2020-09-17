@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
 
-import { yam as yamAddress, yamv2 as yamV2Address } from '../../../constants/tokenAddresses'
+import { oce as oceAddress, ocev2 as oceV2Address } from '../../../constants/tokenAddresses'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getDisplayBalance } from '../../../utils/formatBalance'
 
@@ -26,8 +26,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
     reset()
   }, [onDismiss, reset])
 
-  const yamBalance = useTokenBalance(yamAddress)
-  const yamV2Balance = useTokenBalance(yamV2Address)
+  const oceBalance   = useTokenBalance(oceAddress)
+  const oceV2Balance = useTokenBalance(oceV2Address)
 
   return (
     <Modal>
@@ -41,8 +41,8 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
               <span>🍠</span>
             </CardIcon>
             <StyledBalance>
-              <Value value={getDisplayBalance(yamV2Balance, 24)} />
-              <Label text="YAMV2 Balance" />
+              <Value value={getDisplayBalance(oceV2Balance, 24)} />
+              <Label text="OCEV2 Balance" />
             </StyledBalance>
           </StyledBalanceWrapper>
         </div>

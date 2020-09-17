@@ -12,12 +12,12 @@ import Loader      from '../../../components/Loader'
 import Spacer      from '../../../components/Spacer'
 
 import useFarms    from '../../../hooks/useFarms'
-import useYam      from '../../../hooks/useYam'
+import useOce      from '../../../hooks/useOce'
 
 import { Farm }     from '../../../contexts/Farms'
 
 import { bnToDec }  from '../../../utils'
-import { getEarned, getPoolStartTime } from '../../../yamUtils'
+import { getEarned, getPoolStartTime } from '../../../oceUtils'
 
 const FarmCards: React.FC = () => {
   const [farms]     = useFarms()
@@ -69,7 +69,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
   const { contract } = farm
   const { account }  = useWallet()
-  const yam          = useYam()
+  const oce          = useOce()
 
   const getStartTime = useCallback(async () => {
 
@@ -90,7 +90,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
   }
 
   useEffect(() => {
-    if (farm && farm.id === 'yam_ycrv_uni_lp') {
+    if (farm && farm.id === 'oce_ycrv_uni_lp') {
         getStartTime()
     }
   }, [farm, getStartTime])
@@ -100,23 +100,23 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
       console.info(contract);
 
-      const earned = await getEarned(yam, contract, account)
+      const earned = await getEarned(oce, contract, account)
 
       console.info(earned);
 
       setHarvestable(bnToDec(earned))
     }
-    if (yam && account) {
+    if (oce && account) {
       fetchEarned()
     }
-  }, [yam, contract, account, setHarvestable])
+  }, [oce, contract, account, setHarvestable])
 
   // 代币开始时间
   const poolActive = startTime * 1000 - Date.now() <= 0
 
   return (
     <StyledCardWrapper>
-      {farm.id === 'yam_ycrv_uni_lp' && (
+      {farm.id === 'oce_ycrv_uni_lp' && (
         <StyledCardAccent />
       )}
 
@@ -135,7 +135,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
             <Spacer />
 
             <StyledHarvestable>
-              {harvestable ? `${numeral(harvestable).format('0.00a')} YAMs ready to harvest.` : undefined}
+              {harvestable ? `${numeral(harvestable).format('0.00a')} OCEs ready to harvest.` : undefined}
             </StyledHarvestable>
 
             <Button

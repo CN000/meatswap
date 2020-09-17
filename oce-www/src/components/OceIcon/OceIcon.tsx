@@ -1,13 +1,13 @@
 import React from 'react'
 
-interface YamIconProps {
+interface OceIconProps {
   size?: number,
   v1?: boolean,
   v2?: boolean,
   v3?: boolean
 }
 
-const YamIcon: React.FC<YamIconProps> = ({ size = 36, v1, v2, v3 }) => (
+const OceIcon: React.FC<OceIconProps> = ({ size = 36, v1, v2, v3 }) => (
   <span
     role="img"
     style={{
@@ -19,4 +19,4 @@ const YamIcon: React.FC<YamIconProps> = ({ size = 36, v1, v2, v3 }) => (
   </span>
 )
 
-export default YamIcon
+export default OceIcon

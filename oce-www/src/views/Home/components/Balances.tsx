@@ -8,33 +8,33 @@ import CardContent from '../../../components/CardContent'
 import Label       from '../../../components/Label'
 import Spacer      from '../../../components/Spacer'
 import Value       from '../../../components/Value'
-import YamIcon     from '../../../components/YamIcon'
+import OceIcon     from '../../../components/OceIcon'
 
-import { yam as yamAddress, yamv2 as yamV2Address } from '../../../constants/tokenAddresses'
+import { oce as oceAddress, ocev2 as oceV2Address } from '../../../constants/tokenAddresses'
 
 import useFarms from '../../../hooks/useFarms'
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import useUnharvested from '../../../hooks/useUnharvested'
-import useYam from '../../../hooks/useYam'
+import useOce from '../../../hooks/useOce'
 
 import { bnToDec } from '../../../utils'
-import { getV2Supply } from '../../../yamUtils'
+import { getV2Supply } from '../../../oceUtils'
 
 const Balances: React.FC = () => {
   const [totalSupply, setTotalSupply] = useState<number>()
-  const v2Balance = useTokenBalance(yamV2Address)
-  const yam = useYam()
+  const v2Balance = useTokenBalance(oceV2Address)
+  const oce = useOce()
   const { account } = useWallet()
 
   useEffect(() => {
     async function fetchTotalSupply () {
-      const supply = await getV2Supply(yam)
+      const supply = await getV2Supply(oce)
       setTotalSupply(bnToDec(supply, 24))
     }
-    if (yam) {
+    if (oce) {
       fetchTotalSupply()
     }
-  }, [yam, setTotalSupply])
+  }, [oce, setTotalSupply])
 
   return (
     <StyledWrapper>
@@ -42,11 +42,11 @@ const Balances: React.FC = () => {
         <CardContent>
           <StyledBalances>
             <StyledBalance>
-              <YamIcon />
+              <OceIcon />
               <Spacer />
               <div style={{ flex: 1 }}>
                 <Value value={!!account ? numeral(bnToDec(v2Balance, 24)).format('0.00a') : '--'} />
-                <Label text="YAMV2 Balance" />
+                <Label text="OCEV2 Balance" />
               </div>
             </StyledBalance>
           </StyledBalances>

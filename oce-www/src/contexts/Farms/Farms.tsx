@@ -3,11 +3,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useWallet } from 'use-wallet'
 import { Contract } from 'web3-eth-contract'
 
-import { yam as yamAddress } from '../../constants/tokenAddresses'
-import useYam from '../../hooks/useYam'
+import { oce as oceAddress } from '../../constants/tokenAddresses'
+import useOce from '../../hooks/useOce'
 
 import { bnToDec } from '../../utils'
-import { getPoolContracts, getEarned } from '../../yamUtils'
+import { getPoolContracts, getEarned } from '../../oceUtils'
 
 import Context from './context'
 import { Farm } from './types'
@@ -56,11 +56,11 @@ const Farms: React.FC = ({ children }) => {
   const [farms, setFarms] = useState<Farm[]>([])
   const [unharvested, setUnharvested] = useState(0)
   
-  const yam         = useYam()
+  const oce         = useOce()
   const { account } = useWallet()
 
   const fetchPools = useCallback(async () => {
-    const pools: { [key: string]: Contract} = await getPoolContracts(yam)
+    const pools: { [key: string]: Contract} = await getPoolContracts(oce)
     const farmsArr: Farm[] = []
     const poolKeys = Object.keys(pools)
 
@@ -77,7 +77,7 @@ const Farms: React.FC = ({ children }) => {
       } else if (tokenKey === 'ampl') {
         tokenKey = 'ampl_eth_uni_lp'
       } else if (tokenKey === 'ycrv') {
-        tokenKey = 'yam_ycrv_uni_lp'
+        tokenKey = 'oce_ycrv_uni_lp'
       }
 
       const method = pool.methods[tokenKey]
@@ -85,7 +85,7 @@ const Farms: React.FC = ({ children }) => {
           let tokenAddress = ''
           if (method) {
               tokenAddress = await method().call()
-          } else if (tokenKey === 'yam_ycrv_uni_lp') {
+          } else if (tokenKey === 'oce_ycrv_uni_lp') {
               tokenAddress = '0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8'
           }
 
@@ -94,8 +94,8 @@ const Farms: React.FC = ({ children }) => {
           name                : NAME_FOR_POOL[poolKey],
           depositToken        : tokenKey,
           depositTokenAddress : tokenAddress,
-          earnToken           : 'yam',
-          earnTokenAddress    : yamAddress,
+          earnToken           : 'oce',
+          earnTokenAddress    : oceAddress,
           icon                : ICON_FOR_POOL[poolKey],
           id                  : tokenKey,
           sort                : SORT_FOR_POOL[poolKey]
@@ -108,13 +108,13 @@ const Farms: React.FC = ({ children }) => {
 
     farmsArr.sort((a, b) => a.sort < b.sort ? 1 : -1)
     setFarms(farmsArr)
-  }, [yam, setFarms])
+  }, [oce, setFarms])
 
   useEffect(() => {
-    if (yam) {
+    if (oce) {
       fetchPools()
     }
-  }, [yam, fetchPools])
+  }, [oce, fetchPools])
 
   useEffect(() => {
     async function fetchUnharvested () {
@@ -122,18 +122,18 @@ const Farms: React.FC = ({ children }) => {
 
         console.info(farm.contract)
 
-        const earnings = await getEarned(yam, farm.contract, account)
+        const earnings = await getEarned(oce, farm.contract, account)
         return bnToDec(earnings)
       }))
       const totalBal = unharvestedBalances.reduce((acc, val) => acc + val)
       setUnharvested(totalBal)
     }
 
-    if (account && farms.length && yam) {
+    if (account && farms.length && oce) {
       fetchUnharvested()
     }
 
-  }, [account, farms, setUnharvested, yam])
+  }, [account, farms, setUnharvested, oce])
   
   return (
     <Context.Provider value={{

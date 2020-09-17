@@ -13,13 +13,13 @@ import Separator from '../../../components/Separator'
 import Spacer from '../../../components/Spacer'
 import WalletProviderModal from '../../../components/WalletProviderModal'
 
-import { yam as yamV1Address } from '../../../constants/tokenAddresses'
+import { oce as oceV1Address } from '../../../constants/tokenAddresses'
 
 import useAllowance from '../../../hooks/useAllowance'
 import useApprove from '../../../hooks/useApprove'
 import useModal from '../../../hooks/useModal'
 import useUnharvested from '../../../hooks/useUnharvested'
-import useYam from '../../../hooks/useYam'
+import useOce from '../../../hooks/useOce'
 
 import { getContract } from '../../../utils/erc20'
 
@@ -32,12 +32,12 @@ const MigrationInstructionsModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const { account, ethereum } = useWallet()
   const hasHarvested = !!account && !harvested
 
-  const yam = useYam()
-  const yamTokenContract = useMemo(() => getContract(ethereum as provider, yamV1Address), [])
-  const migrationContract = yam ? (yam as any).contracts.yamV2migration : undefined
+  const oce = useOce()
+  const oceTokenContract = useMemo(() => getContract(ethereum as provider, oceV1Address), [])
+  const migrationContract = oce ? (oce as any).contracts.oceV2migration : undefined
 
-  const allowance = useAllowance(yamTokenContract, migrationContract)
-  const { onApprove } = useApprove(yamTokenContract, migrationContract)
+  const allowance = useAllowance(oceTokenContract, migrationContract)
+  const { onApprove } = useApprove(oceTokenContract, migrationContract)
   const hasApproved = !!allowance.toNumber()
 
   const handleApprove = useCallback(async () => {

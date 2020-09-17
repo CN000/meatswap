@@ -3,7 +3,7 @@ pragma solidity 0.5.17;
 /* import "./OCETokenInterface.sol"; */
 import "./OCEGovernance.sol";
 
-contract YAMToken is OCEGovernanceToken {
+contract OCEToken is OCEGovernanceToken {
     // Modifiers
     modifier onlyGov() {
         require(msg.sender == gov);
@@ -33,7 +33,7 @@ contract YAMToken is OCEGovernanceToken {
     )
         public
     {
-        require(yamsScalingFactor == 0, "already initialized");
+        require(ocesScalingFactor == 0, "already initialized");
         name = name_;
         symbol = symbol_;
         decimals = decimals_;
@@ -56,8 +56,8 @@ contract YAMToken is OCEGovernanceToken {
         view
         returns (uint256)
     {
-        // scaling factor can only go up to 2**256-1 = initSupply * yamsScalingFactor
-        // this is used to check if yamsScalingFactor will be too high to compute balances when rebasing.
+        // scaling factor can only go up to 2**256-1 = initSupply * ocesScalingFactor
+        // this is used to check if ocesScalingFactor will be too high to compute balances when rebasing.
         return uint256(-1) / initSupply;
     }
 
@@ -81,19 +81,19 @@ contract YAMToken is OCEGovernanceToken {
       totalSupply = totalSupply.add(amount);
 
       // get underlying value
-      uint256 yamValue = amount.mul(internalDecimals).div(yamsScalingFactor);
+      uint256 oceValue = amount.mul(internalDecimals).div(ocesScalingFactor);
 
       // increase initSupply
-      initSupply = initSupply.add(yamValue);
+      initSupply = initSupply.add(oceValue);
 
       // make sure the mint didnt push maxScalingFactor too low
-      require(yamsScalingFactor <= _maxScalingFactor(), "max scaling factor too low");
+      require(ocesScalingFactor <= _maxScalingFactor(), "max scaling factor too low");
 
       // add balance
-      _oceBalances[to] = _oceBalances[to].add(yamValue);
+      _oceBalances[to] = _oceBalances[to].add(oceValue);
 
       // add delegates to the minter
-      _moveDelegates(address(0), _delegates[to], yamValue);
+      _moveDelegates(address(0), _delegates[to], oceValue);
       emit Mint(to, amount);
     }
 
@@ -110,22 +110,22 @@ contract YAMToken is OCEGovernanceToken {
         validRecipient(to)
         returns (bool)
     {
-        // underlying balance is stored in yams, so divide by current scaling factor
+        // underlying balance is stored in oces, so divide by current scaling factor
 
         // note, this means as scaling factor grows, dust will be untransferrable.
-        // minimum transfer value == yamsScalingFactor / 1e24;
+        // minimum transfer value == ocesScalingFactor / 1e24;
 
         // get amount in underlying
-        uint256 yamValue = value.mul(internalDecimals).div(yamsScalingFactor);
+        uint256 oceValue = value.mul(internalDecimals).div(ocesScalingFactor);
 
         // sub from balance of sender
-        _oceBalances[msg.sender] = _oceBalances[msg.sender].sub(yamValue);
+        _oceBalances[msg.sender] = _oceBalances[msg.sender].sub(oceValue);
 
         // add to balance of receiver
-        _oceBalances[to] = _oceBalances[to].add(yamValue);
+        _oceBalances[to] = _oceBalances[to].add(oceValue);
         emit Transfer(msg.sender, to, value);
 
-        _moveDelegates(_delegates[msg.sender], _delegates[to], yamValue);
+        _moveDelegates(_delegates[msg.sender], _delegates[to], oceValue);
         return true;
     }
 
@@ -143,15 +143,15 @@ contract YAMToken is OCEGovernanceToken {
         // decrease allowance
         _allowedFragments[from][msg.sender] = _allowedFragments[from][msg.sender].sub(value);
 
-        // get value in yams
-        uint256 yamValue = value.mul(internalDecimals).div(yamsScalingFactor);
+        // get value in oces
+        uint256 oceValue = value.mul(internalDecimals).div(ocesScalingFactor);
 
         // sub from from
-        _oceBalances[from] = _oceBalances[from].sub(yamValue);
-        _oceBalances[to] = _oceBalances[to].add(yamValue);
+        _oceBalances[from] = _oceBalances[from].sub(oceValue);
+        _oceBalances[to] = _oceBalances[to].add(oceValue);
         emit Transfer(from, to, value);
 
-        _moveDelegates(_delegates[from], _delegates[to], yamValue);
+        _moveDelegates(_delegates[from], _delegates[to], oceValue);
         return true;
     }
 
@@ -164,7 +164,7 @@ contract YAMToken is OCEGovernanceToken {
       view
       returns (uint256)
     {
-      return _oceBalances[who].mul(yamsScalingFactor).div(internalDecimals);
+      return _oceBalances[who].mul(ocesScalingFactor).div(internalDecimals);
     }
 
     /** @notice Currently returns the internal storage amount
@@ -320,30 +320,30 @@ contract YAMToken is OCEGovernanceToken {
         returns (uint256)
     {
         if (indexDelta == 0) {
-          emit Rebase(epoch, yamsScalingFactor, yamsScalingFactor);
+          emit Rebase(epoch, ocesScalingFactor, ocesScalingFactor);
           return totalSupply;
         }
 
-        uint256 prevYamsScalingFactor = yamsScalingFactor;
+        uint256 prevOcesScalingFactor = ocesScalingFactor;
 
         if (!positive) {
-           yamsScalingFactor = yamsScalingFactor.mul(BASE.sub(indexDelta)).div(BASE);
+           ocesScalingFactor = ocesScalingFactor.mul(BASE.sub(indexDelta)).div(BASE);
         } else {
-            uint256 newScalingFactor = yamsScalingFactor.mul(BASE.add(indexDelta)).div(BASE);
+            uint256 newScalingFactor = ocesScalingFactor.mul(BASE.add(indexDelta)).div(BASE);
             if (newScalingFactor < _maxScalingFactor()) {
-                yamsScalingFactor = newScalingFactor;
+                ocesScalingFactor = newScalingFactor;
             } else {
-              yamsScalingFactor = _maxScalingFactor();
+              ocesScalingFactor = _maxScalingFactor();
             }
         }
 
-        totalSupply = initSupply.mul(yamsScalingFactor);
-        emit Rebase(epoch, prevYamsScalingFactor, yamsScalingFactor);
+        totalSupply = initSupply.mul(ocesScalingFactor);
+        emit Rebase(epoch, prevOcesScalingFactor, ocesScalingFactor);
         return totalSupply;
     }
 }
 
-contract YAM is YAMToken {
+contract Oce is OceToken {
     /**
      * @notice Initialize the new money market
      * @param name_ ERC-20 name of this token
@@ -365,7 +365,7 @@ contract YAM is YAMToken {
 
         initSupply = initSupply_.mul(10**24/ (BASE));
         totalSupply = initSupply_;
-        yamsScalingFactor = BASE;
+        ocesScalingFactor = BASE;
         _oceBalances[initial_owner] = initSupply_.mul(10**24 / (BASE));
 
         // owner renounces ownership after deployment as they need to set

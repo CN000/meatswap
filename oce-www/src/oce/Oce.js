@@ -12,7 +12,7 @@ import {
 
 const oneEther = 1000000000000000000;
 
-export class Yam {
+export class Oce {
   constructor(
     provider,
     networkId,

@@ -2,8 +2,8 @@
 
 // Token
 // deployed first
-const YAMImplementation = artifacts.require("YAMDelegate");
-const YAMProxy = artifacts.require("YAMDelegator");
+const OCEImplementation = artifacts.require("OCEDelegate");
+const OCEProxy = artifacts.require("OCEDelegator");
 
 // ============ Main Migration ============
 
@@ -19,25 +19,24 @@ module.exports = migration;
 
 
 async function deployToken(deployer, network) {
-  await deployer.deploy(YAMImplementation);
+  await deployer.deploy(OCEImplementation);
   if (network != "mainnet") {
-    await deployer.deploy(YAMProxy,
-      "YAM",
-      "YAM",
+    await deployer.deploy(OCEProxy,
+      "OCE",
+      "OCE",
       18,
       "9000000000000000000000000", // print extra few mil for user
-      YAMImplementation.address,
+      OCEImplementation.address,
       "0x"
     );
   } else {
-    await deployer.deploy(YAMProxy,
-      "YAM",
-      "YAM",
+    await deployer.deploy(OCEProxy,
+      "OCE",
+      "OCE",
       18,
       "2000000000000000000000000",
-      YAMImplementation.address,
+      OCEImplementation.address,
       "0x"
     );
   }
-
 }

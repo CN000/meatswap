@@ -13,7 +13,7 @@ import TopBar from './components/TopBar'
 
 import FarmsProvider from './contexts/Farms'
 import ModalsProvider from './contexts/Modals'
-import YamProvider from './contexts/OceProvider'
+import OceProvider from './contexts/OceProvider'
 import TransactionProvider from './contexts/Transactions'
 
 import useModal from './hooks/useModal'
@@ -68,7 +68,7 @@ const Providers: React.FC = ({ children }) => {
           walletconnect: { rpcUrl: 'https://mainnet.eth.aragon.network/' },
         }}
       >
-        <YamProvider>
+        <OceProvider>
           <TransactionProvider>
               <FarmsProvider>
                 <ModalsProvider>
@@ -76,7 +76,7 @@ const Providers: React.FC = ({ children }) => {
                 </ModalsProvider>
               </FarmsProvider>
           </TransactionProvider>
-        </YamProvider>
+        </OceProvider>
       </UseWalletProvider>
     </ThemeProvider>
   )

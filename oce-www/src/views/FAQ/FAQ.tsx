@@ -10,56 +10,56 @@ import PageHeader from '../../components/PageHeader'
 const FAQ: React.FC = () => {
   return (
     <Page>
-      <PageHeader icon="❓" title="About YAM" />
+      <PageHeader icon="❓" title="About OCE" />
       <Container>
         <Card>
           <CardContent>
-            <p>Please see below for the most up to date information regarding the future of the YAM protocol. As has always been our intention, the community will be in control of future decision making. The migration from YAMv1 to YAMv2 is the first step in this process; from there, YAMv2 tokenholders will signal their desired path forward on community proposals.</p>
+            <p>Please see below for the most up to date information regarding the future of the OCE protocol. As has always been our intention, the community will be in control of future decision making. The migration from OCEv1 to OCEv2 is the first step in this process; from there, OCEv2 tokenholders will signal their desired path forward on community proposals.</p>
             <StyledHeading>1. How will the migration process work?</StyledHeading>
             <StyledList>
-              <StyledListItem>A new YAMv2 ERC-20 token will be created. This will be a standard ERC-20 token with no rebases to serve as placeholder while YAMv3 is audited.</StyledListItem>
+              <StyledListItem>A new OCEv2 ERC-20 token will be created. This will be a standard ERC-20 token with no rebases to serve as placeholder while OCEv3 is audited.</StyledListItem>
               <StyledListItem>A migration contract will be audited and deployed as soon as possible. We are in discussions with multiple auditors.</StyledListItem>
-              <StyledListItem>All YAMv1 holders can burn YAMv1 to mint YAMv2 via a migration contract.</StyledListItem>
-              <StyledListItem>The number of YAMv2 tokens received will be based upon YAMv1 balanceOfUnderlying, which remains constant regardless of rebases.</StyledListItem>
-              <StyledListItem>The migration contract will have a deadline that will be a minimum of 48 hours after deployment and a maximum of 72 hours after deployment. Following the deadline, migration will be impossible and YAMv1 tokens will no longer be able to migrate to YAMv2.</StyledListItem>
+              <StyledListItem>All OCEv1 holders can burn OCEv1 to mint OCEv2 via a migration contract.</StyledListItem>
+              <StyledListItem>The number of OCEv2 tokens received will be based upon OCEv1 balanceOfUnderlying, which remains constant regardless of rebases.</StyledListItem>
+              <StyledListItem>The migration contract will have a deadline that will be a minimum of 48 hours after deployment and a maximum of 72 hours after deployment. Following the deadline, migration will be impossible and OCEv1 tokens will no longer be able to migrate to OCEv2.</StyledListItem>
             </StyledList>
-            <StyledHeading>2. How will the YAMv3 protocol relaunch work?</StyledHeading>
+            <StyledHeading>2. How will the OCEv3 protocol relaunch work?</StyledHeading>
             <StyledList>
-              <StyledListItem>YAMv3 will be a fully audited version of the YAM protocol.</StyledListItem>
-              <StyledListItem>There will be a mechanism that allows for YAMv2 to be converted to YAMv3. The details of this mechanism will be subject to a vote.</StyledListItem>
+              <StyledListItem>OCEv3 will be a fully audited version of the OCE protocol.</StyledListItem>
+              <StyledListItem>There will be a mechanism that allows for OCEv2 to be converted to OCEv3. The details of this mechanism will be subject to a vote.</StyledListItem>
             </StyledList>
             <StyledHeading>How will delegators be rewarded?</StyledHeading>
             <StyledList>
-              <StyledListItem>Members of the community will submit proposals to reward those who delegated votes to help save YAM.These proposals will be subject to tokenholder approval.</StyledListItem>
-              <StyledListItem>You can view snapshotted votes at the time of governance proposal <a href="https://raw.githubusercontent.com/yam-finance/yam-protocol/master/yam_delegator_snapshot_10650187_draft.json">here.</a></StyledListItem>
+              <StyledListItem>Members of the community will submit proposals to reward those who delegated votes to help save OCE.These proposals will be subject to tokenholder approval.</StyledListItem>
+              <StyledListItem>You can view snapshotted votes at the time of governance proposal <a href="https://raw.githubusercontent.com/OCE-finance/OCE-protocol/master/OCE_delegator_snapshot_10650187_draft.json">here.</a></StyledListItem>
             </StyledList>
-            <StyledHeading>4. Can I continue to farm YAMv1?</StyledHeading>
+            <StyledHeading>4. Can I continue to farm OCEv1?</StyledHeading>
             <StyledList>
               <StyledListItem>The staking contracts continue to function.</StyledListItem>
-              <StyledListItem>Providing liquidity to the YAM/yCRV Uniswap pool is extremely risky due to the bug in the YAM rebase functionality. A positive rebase will buy yCRV and send it to the frozen reserves contract.</StyledListItem>
+              <StyledListItem>Providing liquidity to the OCE/yCRV Uniswap pool is extremely risky due to the bug in the OCE rebase functionality. A positive rebase will buy yCRV and send it to the frozen reserves contract.</StyledListItem>
             </StyledList>
-            <StyledHeading>5. What are the official Yam token addresses?</StyledHeading>
+            <StyledHeading>5. What are the official OCE token addresses?</StyledHeading>
             <StyledList>
               <StyledListItem>
                 <a href="https://etherscan.io/token/0x0e2298e3b3390e3b945a5456fbf59ecc3f55da16">
-                  Yamv1: 0x0e2298e3b3390e3b945a5456fbf59ecc3f55da16
+                  Ocev1: 0x0e2298e3b3390e3b945a5456fbf59ecc3f55da16
                 </a>
               </StyledListItem>
               <StyledListItem>
                 <a href="https://etherscan.io/token/0xaba8cac6866b83ae4eec97dd07ed254282f6ad8a">
-                  Yamv2: 0xaba8cac6866b83ae4eec97dd07ed254282f6ad8a
+                  Ocev2: 0xaba8cac6866b83ae4eec97dd07ed254282f6ad8a
                 </a>
               </StyledListItem>
-              <StyledListItem>Yamv3: TBD</StyledListItem>
+              <StyledListItem>Ocev3: TBD</StyledListItem>
             </StyledList>
             <StyledHeading>Additional Resources</StyledHeading>
             <StyledList>
-              <StyledListItem><a href="https://medium.com/@yamfinance/yam-finance-d0ad577250c7">Intro post</a></StyledListItem>
-              <StyledListItem><a href="https://medium.com/@yamfinance/yam-migration-plan-dc72ad49aca6">Migration plan</a></StyledListItem>
-              <StyledListItem><a href="https://medium.com/@yamfinance/yam-post-rescue-attempt-update-c9c90c05953f">Initial post-mortem and bug explanation</a></StyledListItem>
+              <StyledListItem><a href="">Intro post</a></StyledListItem>
+              <StyledListItem><a href="">Migration plan</a></StyledListItem>
+              <StyledListItem><a href="">Initial post-mortem and bug explanation</a></StyledListItem>
             </StyledList>
             <StyledHeading>Community-built resource for protocol information</StyledHeading>
-            <a href="https://yam.chainwiki.dev/en/home">https://yam.chainwiki.dev/en/home</a>
+            <a href="">https://oce.chainwiki.dev/en/home</a>
           </CardContent>
         </Card>
       </Container>

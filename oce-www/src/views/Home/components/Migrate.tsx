@@ -14,17 +14,17 @@ import Separator from '../../../components/Separator'
 import Spacer from '../../../components/Spacer'
 import Value from '../../../components/Value'
 
-import { yam as yamAddress } from '../../../constants/tokenAddresses'
+import { oce as oceAddress } from '../../../constants/tokenAddresses'
 
 import useAllowance from '../../../hooks/useAllowance'
 import useApprove from '../../../hooks/useApprove'
 import useScalingFactor from '../../../hooks/useScalingFactor'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import useYam from '../../../hooks/useYam'
+import useOce from '../../../hooks/useOce'
 
 import { bnToDec } from '../../../utils'
 import { getContract } from '../../../utils/erc20'
-import { getMigrationEndTime, migrate } from '../../../yamUtils'
+import { getMigrationEndTime, migrate } from '../../../oceUtils'
 
 const Migrate: React.FC = () => {
 
@@ -34,18 +34,18 @@ const Migrate: React.FC = () => {
 
   const { account, ethereum } = useWallet()
   const scalingFactor = useScalingFactor()
-  const yam = useYam()
+  const oce = useOce()
 
-  const yamV1Balance = bnToDec(useTokenBalance(yamAddress))
-  const yamV2ReceiveAmount = yamV1Balance / scalingFactor
+  const oceV1Balance = bnToDec(useTokenBalance(oceAddress))
+  const oceV2ReceiveAmount = oceV1Balance / scalingFactor
 
-  const yamV1Token = useMemo(() => {
-    return getContract(ethereum as provider, yamAddress)
+  const oceV1Token = useMemo(() => {
+    return getContract(ethereum as provider, oceAddress)
   }, [ethereum])
 
-  const migrationContract = yam ? (yam as any).contracts.yamV2migration : undefined
-  const allowance = useAllowance(yamV1Token, migrationContract)
-  const { onApprove } = useApprove(yamV1Token, migrationContract)
+  const migrationContract = oce ? (oce as any).contracts.oceV2migration : undefined
+  const allowance = useAllowance(oceV1Token, migrationContract)
+  const { onApprove } = useApprove(oceV1Token, migrationContract)
   
   const countdownRenderer = useCallback((countdownProps: CountdownRenderProps) => {
     const { days, hours, minutes, seconds } = countdownProps
@@ -61,33 +61,34 @@ const Migrate: React.FC = () => {
   const handleMigrate = useCallback(async () => {
     try {
       setMigrateButtonDisabled(true)
-      await migrate(yam, account)
+      await migrate(oce, account)
       setMigrateButtonDisabled(false)
     } catch (e) {
       setMigrateButtonDisabled(false)
     }
-  }, [account, yam, setMigrateButtonDisabled])
+  }, [account, oce, setMigrateButtonDisabled])
 
   useEffect(() => {
     async function fetchMigrationEndDate () {
       try {
-        const endTimestamp: number = await getMigrationEndTime(yam)
+        const endTimestamp: number = await getMigrationEndTime(oce)
         setMigrationEndDate(new Date(endTimestamp * 1000))
       } catch (e) { console.log(e) }
     }
-    if (yam) {
+
+    if (oce) {
       fetchMigrationEndDate()
     }
-  }, [yam, setMigrationEndDate])
+  }, [oce, setMigrationEndDate])
 
   useEffect(() => {
-    if (!account || !yamV1Balance) {
+    if (!account || !oceV1Balance) {
       setMigrateButtonDisabled(true)
     }
-    if (account && yamV1Balance) {
+    if (account && oceV1Balance) {
       setMigrateButtonDisabled(false)
     }
-  }, [account, setMigrateButtonDisabled, yamV1Balance])
+  }, [account, setMigrateButtonDisabled, oceV1Balance])
 
   const handleApprove = useCallback(async () => {
     setApprovalDisabled(true)
@@ -117,15 +118,15 @@ const Migrate: React.FC = () => {
           <Spacer size="lg" />
           <StyledBalances>
             <StyledBalance>
-              <Value value={yamV1Balance ? numeral(yamV1Balance).format('0.00a') : '--'} />
-              <Label text="Burn YAMV1" />
+              <Value value={oceV1Balance ? numeral(oceV1Balance).format('0.00a') : '--'} />
+              <Label text="Burn OCEV1" />
             </StyledBalance>
             <div style={{ alignSelf: 'stretch' }}>
             <Separator orientation="vertical" />
             </div>
             <StyledBalance>
-              <Value value={yamV2ReceiveAmount ? numeral(yamV2ReceiveAmount).format('0.00a') : '--'} />
-              <Label text="Mint YAMV2" />
+              <Value value={oceV2ReceiveAmount ? numeral(oceV2ReceiveAmount).format('0.00a') : '--'} />
+              <Label text="Mint OCEV2" />
             </StyledBalance>
           </StyledBalances>
           <Spacer size="lg" />
@@ -143,7 +144,7 @@ const Migrate: React.FC = () => {
             />
           )}
           <Spacer />
-          <StyledWarning>WARNING: Burning your YAMV1 tokens for YAMV2 tokens is a permanent action.</StyledWarning>
+          <StyledWarning>WARNING: Burning your OCEV1 tokens for OCEV2 tokens is a permanent action.</StyledWarning>
         </CardContent>
       </Card>
     </StyledMigrateWrapper>

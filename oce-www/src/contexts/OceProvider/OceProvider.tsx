@@ -2,29 +2,29 @@ import React, { createContext, useEffect, useState } from 'react'
 
 import { useWallet } from 'use-wallet'
 
-import { Yam } from '../../yam'
+import { Oce } from '../../oce'
 
-export interface YamContext {
-  yam ?: typeof Yam
+export interface OceContext {
+  oce ?: typeof Oce
 }
 
-export const Context = createContext<YamContext>({
-  yam: undefined,
+export const Context = createContext<OceContext>({
+  oce: undefined,
 })
 
 declare global {
   interface Window {
-    yamsauce: any
+    ocesauce: any
   }
 }
 
-const YamProvider: React.FC = ({ children }) => {
+const OceProvider: React.FC = ({ children }) => {
   const { ethereum } = useWallet()
-  const [yam, setYam] = useState<any>()
+  const [oce, setOce] = useState<any>()
 
   useEffect(() => {
     if (ethereum) {
-      const yamLib = new Yam(
+      const oceLib = new Oce(
         ethereum,
         "1",     // networkId
         false, {
@@ -39,16 +39,16 @@ const YamProvider: React.FC = ({ children }) => {
         }
       )
 
-      setYam(yamLib)
-      window.yamsauce = yamLib
+      setOce(oceLib)
+      window.ocesauce = oceLib
     }
   }, [ethereum])
 
   return (
-    <Context.Provider value={{ yam }}>
+    <Context.Provider value={{ oce }}>
       {children}
     </Context.Provider>
   )
 }
 
-export default YamProvider
+export default OceProvider

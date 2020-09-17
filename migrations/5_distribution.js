@@ -3,29 +3,30 @@
 
 // Protocol
 // deployed second
-const YAMImplementation = artifacts.require("YAMDelegate");
-const YAMProxy = artifacts.require("YAMDelegator");
+const OCEImplementation = artifacts.require("OCEDelegate");
+const OCEProxy = artifacts.require("OCEDelegator");
 
 // deployed third
-const YAMReserves = artifacts.require("YAMReserves");
-const YAMRebaser = artifacts.require("YAMRebaser");
+const OCEReserves = artifacts.require("OCEReserves");
+const OCERebaser = artifacts.require("OCERebaser");
 
 const Gov = artifacts.require("GovernorAlpha");
 const Timelock = artifacts.require("Timelock");
 
 // deployed fourth
-const YAM_ETHPool = artifacts.require("YAMETHPool");
-const YAM_uAMPLPool = artifacts.require("YAMAMPLPool");
-const YAM_YFIPool = artifacts.require("YAMYFIPool");
-const YAM_LINKPool = artifacts.require("YAMLINKPool");
-const YAM_MKRPool = artifacts.require("YAMMKRPool");
-const YAM_LENDPool = artifacts.require("YAMLENDPool");
-const YAM_COMPPool = artifacts.require("YAMCOMPPool");
-const YAM_SNXPool = artifacts.require("YAMSNXPool");
+const OCE_ETHPool = artifacts.require("OCEETHPool");
+const OCE_USDTPool = artifacts.require("OCEUSDTPool");
+const OCE_uAMPLPool = artifacts.require("OCEAMPLPool");
+const OCE_YFIPool = artifacts.require("OCEYFIPool");
+const OCE_LINKPool = artifacts.require("OCELINKPool");
+const OCE_MKRPool = artifacts.require("OCEMKRPool");
+const OCE_LENDPool = artifacts.require("OCELENDPool");
+const OCE_COMPPool = artifacts.require("OCECOMPPool");
+const OCE_SNXPool = artifacts.require("OCESNXPool");
 
 
 // deployed fifth
-const YAMIncentivizer = artifacts.require("YAMIncentivizer");
+const OCEIncentivizer = artifacts.require("OCEIncentivizer");
 
 // ============ Main Migration ============
 
@@ -44,35 +45,38 @@ module.exports = migration;
 
 async function deployDistribution(deployer, network, accounts) {
   console.log(network)
-  let yam = await YAMProxy.deployed();
-  let yReserves = await YAMReserves.deployed()
-  let yRebaser = await YAMRebaser.deployed()
+  let oce = await OCEProxy.deployed();
+  let yReserves = await OCEReserves.deployed()
+  let yRebaser = await OCERebaser.deployed()
   let tl = await Timelock.deployed();
   let gov = await Gov.deployed();
   if (network != "test") {
-    await deployer.deploy(YAM_ETHPool);
-    await deployer.deploy(YAM_uAMPLPool);
-    await deployer.deploy(YAM_YFIPool);
-    await deployer.deploy(YAMIncentivizer);
-    await deployer.deploy(YAM_LINKPool);
-    await deployer.deploy(YAM_MKRPool);
-    await deployer.deploy(YAM_LENDPool);
-    await deployer.deploy(YAM_COMPPool);
-    await deployer.deploy(YAM_SNXPool);
+    await deployer.deploy(OCE_ETHPool);
+    await deployer.deploy(OCE_USDTPool);
+    await deployer.deploy(OCE_uAMPLPool);
+    await deployer.deploy(OCE_YFIPool);
+    await deployer.deploy(OCEIncentivizer);
+    await deployer.deploy(OCE_LINKPool);
+    await deployer.deploy(OCE_MKRPool);
+    await deployer.deploy(OCE_LENDPool);
+    await deployer.deploy(OCE_COMPPool);
+    await deployer.deploy(OCE_SNXPool);
 
-    let eth_pool = new web3.eth.Contract(YAM_ETHPool.abi, YAM_ETHPool.address);
-    let ampl_pool = new web3.eth.Contract(YAM_uAMPLPool.abi, YAM_uAMPLPool.address);
-    let yfi_pool = new web3.eth.Contract(YAM_YFIPool.abi, YAM_YFIPool.address);
-    let lend_pool = new web3.eth.Contract(YAM_LENDPool.abi, YAM_LENDPool.address);
-    let mkr_pool = new web3.eth.Contract(YAM_MKRPool.abi, YAM_MKRPool.address);
-    let snx_pool = new web3.eth.Contract(YAM_SNXPool.abi, YAM_SNXPool.address);
-    let comp_pool = new web3.eth.Contract(YAM_COMPPool.abi, YAM_COMPPool.address);
-    let link_pool = new web3.eth.Contract(YAM_LINKPool.abi, YAM_LINKPool.address);
-    let ycrv_pool = new web3.eth.Contract(YAMIncentivizer.abi, YAMIncentivizer.address);
+    let eth_pool = new web3.eth.Contract(OCE_ETHPool.abi, OCE_ETHPool.address);
+    let usdt_pool = new web3.eth.Contract(OCE_ETHPool.abi, OCE_USDTPool.address);
+    let ampl_pool = new web3.eth.Contract(OCE_uAMPLPool.abi, OCE_uAMPLPool.address);
+    let yfi_pool = new web3.eth.Contract(OCE_YFIPool.abi, OCE_YFIPool.address);
+    let lend_pool = new web3.eth.Contract(OCE_LENDPool.abi, OCE_LENDPool.address);
+    let mkr_pool = new web3.eth.Contract(OCE_MKRPool.abi, OCE_MKRPool.address);
+    let snx_pool = new web3.eth.Contract(OCE_SNXPool.abi, OCE_SNXPool.address);
+    let comp_pool = new web3.eth.Contract(OCE_COMPPool.abi, OCE_COMPPool.address);
+    let link_pool = new web3.eth.Contract(OCE_LINKPool.abi, OCE_LINKPool.address);
+    let ycrv_pool = new web3.eth.Contract(OCEIncentivizer.abi, OCEIncentivizer.address);
 
     console.log("setting distributor");
     await Promise.all([
         eth_pool.methods.setRewardDistribution(accounts[0]).send({from: accounts[0], gas: 100000}),
+        usdt_pool.methods.setRewardDistribution(accounts[0]).send({from: accounts[0], gas: 100000}),
         ampl_pool.methods.setRewardDistribution(accounts[0]).send({from: accounts[0], gas: 100000}),
         yfi_pool.methods.setRewardDistribution(accounts[0]).send({from: accounts[0], gas: 100000}),
         ycrv_pool.methods.setRewardDistribution(accounts[0]).send({from: accounts[0], gas: 100000}),
@@ -90,19 +94,21 @@ async function deployDistribution(deployer, network, accounts) {
     console.log("transfering and notifying");
     console.log("eth");
     await Promise.all([
-      yam.transfer(YAM_ETHPool.address, two_fifty.toString()),
-      yam.transfer(YAM_uAMPLPool.address, two_fifty.toString()),
-      yam.transfer(YAM_YFIPool.address, two_fifty.toString()),
-      yam.transfer(YAM_LENDPool.address, two_fifty.toString()),
-      yam.transfer(YAM_MKRPool.address, two_fifty.toString()),
-      yam.transfer(YAM_SNXPool.address, two_fifty.toString()),
-      yam.transfer(YAM_COMPPool.address, two_fifty.toString()),
-      yam.transfer(YAM_LINKPool.address, two_fifty.toString()),
-      yam._setIncentivizer(YAMIncentivizer.address),
+      oce.transfer(OCE_ETHPool.address, two_fifty.toString()),
+      oce.transfer(OCE_USDTPool.address, two_fifty.toString()),
+      oce.transfer(OCE_uAMPLPool.address, two_fifty.toString()),
+      oce.transfer(OCE_YFIPool.address, two_fifty.toString()),
+      oce.transfer(OCE_LENDPool.address, two_fifty.toString()),
+      oce.transfer(OCE_MKRPool.address, two_fifty.toString()),
+      oce.transfer(OCE_SNXPool.address, two_fifty.toString()),
+      oce.transfer(OCE_COMPPool.address, two_fifty.toString()),
+      oce.transfer(OCE_LINKPool.address, two_fifty.toString()),
+      oce._setIncentivizer(OCEIncentivizer.address),
     ]);
 
     await Promise.all([
       eth_pool.methods.notifyRewardAmount(two_fifty.toString()).send({from:accounts[0]}),
+      usdt_pool.methods.notifyRewardAmount(two_fifty.toString()).send({from:accounts[0]}),
       ampl_pool.methods.notifyRewardAmount(two_fifty.toString()).send({from:accounts[0]}),
       yfi_pool.methods.notifyRewardAmount(two_fifty.toString()).send({from:accounts[0]}),
       lend_pool.methods.notifyRewardAmount(two_fifty.toString()).send({from:accounts[0]}),
@@ -117,6 +123,7 @@ async function deployDistribution(deployer, network, accounts) {
 
     await Promise.all([
       eth_pool.methods.setRewardDistribution(Timelock.address).send({from: accounts[0], gas: 100000}),
+      usdt_pool.methods.setRewardDistribution(Timelock.address).send({from: accounts[0], gas: 100000}),
       ampl_pool.methods.setRewardDistribution(Timelock.address).send({from: accounts[0], gas: 100000}),
       yfi_pool.methods.setRewardDistribution(Timelock.address).send({from: accounts[0], gas: 100000}),
       lend_pool.methods.setRewardDistribution(Timelock.address).send({from: accounts[0], gas: 100000}),
@@ -128,6 +135,7 @@ async function deployDistribution(deployer, network, accounts) {
     ]);
     await Promise.all([
       eth_pool.methods.transferOwnership(Timelock.address).send({from: accounts[0], gas: 100000}),
+      usdt_pool.methods.transferOwnership(Timelock.address).send({from: accounts[0], gas: 100000}),
       ampl_pool.methods.transferOwnership(Timelock.address).send({from: accounts[0], gas: 100000}),
       yfi_pool.methods.transferOwnership(Timelock.address).send({from: accounts[0], gas: 100000}),
       lend_pool.methods.transferOwnership(Timelock.address).send({from: accounts[0], gas: 100000}),
@@ -140,14 +148,14 @@ async function deployDistribution(deployer, network, accounts) {
   }
 
   await Promise.all([
-    yam._setPendingGov(Timelock.address),
+    oce._setPendingGov(Timelock.address),
     yReserves._setPendingGov(Timelock.address),
     yRebaser._setPendingGov(Timelock.address),
   ]);
 
   await Promise.all([
       tl.executeTransaction(
-        YAMProxy.address,
+        OCEProxy.address,
         0,
         "_acceptGov()",
         "0x",
@@ -155,7 +163,7 @@ async function deployDistribution(deployer, network, accounts) {
       ),
 
       tl.executeTransaction(
-        YAMReserves.address,
+        OCEReserves.address,
         0,
         "_acceptGov()",
         "0x",
@@ -163,7 +171,7 @@ async function deployDistribution(deployer, network, accounts) {
       ),
 
       tl.executeTransaction(
-        YAMRebaser.address,
+        OCERebaser.address,
         0,
         "_acceptGov()",
         "0x",

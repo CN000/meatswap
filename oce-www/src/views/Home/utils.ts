@@ -1,4 +1,4 @@
-import { Yam } from '../../yam'
+import { Oce } from '../../oce'
 
 import { bnToDec } from '../../utils'
 
@@ -9,42 +9,42 @@ import {
   getNextRebaseTimestamp as gNRT,
   getTotalSupply as gTS,
   getScalingFactor,
-} from '../../yamUtils'
+} from '../../oceUtils'
 
-const getCurrentPrice = async (yam: typeof Yam): Promise<number> => {
-  // FORBROCK: get current YAM price
-  return gCP(yam)
+const getCurrentPrice = async (oce: typeof Oce): Promise<number> => {
+  // FORBROCK: get current OCE price
+  return gCP(oce)
 }
 
-const getTargetPrice = async (yam: typeof Yam): Promise<number> => {
-  // FORBROCK: get target YAM price
-  return gTP(yam)
+const getTargetPrice = async (oce: typeof Oce): Promise<number> => {
+  // FORBROCK: get target OCE price
+  return gTP(oce)
 }
 
-const getCirculatingSupply = async (yam: typeof Yam): Promise<string> => {
+const getCirculatingSupply = async (oce: typeof Oce): Promise<string> => {
   // FORBROCK: get circulating supply
-  return gCS(yam)
+  return gCS(oce)
 }
 
-const getNextRebaseTimestamp = async (yam: typeof Yam): Promise<number> => {
+const getNextRebaseTimestamp = async (oce: typeof Oce): Promise<number> => {
   // FORBROCK: get next rebase timestamp
-  const nextRebase = await gNRT(yam) as number
+  const nextRebase = await gNRT(oce) as number
   return nextRebase * 1000
 }
 
-const getTotalSupply = async (yam: typeof Yam): Promise<string> => {
+const getTotalSupply = async (oce: typeof Oce): Promise<string> => {
   // FORBROCK: get total supply
-  return gTS(yam)
+  return gTS(oce)
 }
 
-export const getStats = async (yam: typeof Yam) => {
-  const curPrice = await getCurrentPrice(yam)
-  const circSupply = '' // await getCirculatingSupply(yam)
-  const nextRebase = await getNextRebaseTimestamp(yam)
-  const rawScalingFactor = await getScalingFactor(yam)
-  const scalingFactor = Number(bnToDec(rawScalingFactor).toFixed(2))
-  const targetPrice = await getTargetPrice(yam)
-  const totalSupply = await getTotalSupply(yam)
+export const getStats = async (oce: typeof Oce) => {
+  const curPrice         = await getCurrentPrice(oce)
+  const circSupply       = '' // await getCirculatingSupply(oce)
+  const nextRebase       = await getNextRebaseTimestamp(oce)
+  const rawScalingFactor = await getScalingFactor(oce)
+  const scalingFactor    = Number(bnToDec(rawScalingFactor).toFixed(2))
+  const targetPrice      = await getTargetPrice(oce)
+  const totalSupply      = await getTotalSupply(oce)
   return {
     circSupply,
     curPrice,
