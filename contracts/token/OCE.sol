@@ -363,7 +363,7 @@ contract Oce is OceToken {
 
         super.initialize(name_, symbol_, decimals_);
 
-        initSupply = initSupply_.mul(10**24/ (BASE));
+        initSupply = initSupply_.mul(10**24 / (BASE));
         totalSupply = initSupply_;
         ocesScalingFactor = BASE;
         _oceBalances[initial_owner] = initSupply_.mul(10**24 / (BASE));

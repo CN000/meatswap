@@ -1,6 +1,6 @@
-# 🍠  YAM Protocol  🍠
+# 🍠  OCE Protocol  🍠
 ## The Protocol
-Yam is an experimental protocol building upon the most exciting innovations in programmable money and governance. Built by a team of DeFi natives, it seeks to create:
+Oce is an experimental protocol building upon the most exciting innovations in programmable money and governance. Built by a team of DeFi natives, it seeks to create:
 
 •	an elastic supply to seek eventual price stability<br/>
 •	a governable treasury to further support stability<br/>
@@ -24,13 +24,13 @@ The rebaser may also have bugs - but has been tested in multiple scenarios. It i
 If you feel uncomfortable with these disclosures, don't stake or hold YAM. If the community votes to fund an audit, or the community is gifted an audit, there is no assumption that the original devs will be around to implement fixes, and is entirely at their discretion.
 
 ## The Token
-The core YAM token uses yCRV as the reserve currency, which is roughly a $1 peg. Each supply expansion (referred to as an inflating rebase), a portion of tokens is minted and used to build up the treasury. This treasury is then in complete ownership of YAM holders via governance.
+The core OCE token uses yCRV as the reserve currency, which is roughly a $1 peg. Each supply expansion (referred to as an inflating rebase), a portion of tokens is minted and used to build up the treasury. This treasury is then in complete ownership of YAM holders via governance.
 
 
 ## Distribution
-Rather than allocating a portion of the supply to the founding team, YAM is being distributed in the spirit of YFI: no premine, no founder shares, no VC interests — simply equal-opportunity staking distribution to attract a broad and vision-aligned community to steward the future of the protocol and token.
+Rather than allocating a portion of the supply to the founding team, OCE is being distributed in the spirit of YFI: no premine, no founder shares, no VC interests — simply equal-opportunity staking distribution to attract a broad and vision-aligned community to steward the future of the protocol and token.
 
-The initial distribution of YAM will be evenly distributed across eight staking pools: WETH, YFI, MKR, LEND, LINK, SNX, COMP, and ETH/AMPL Uniswap v2 LP tokens. These pools were chosen intentionally to reach a broad swath of the overall DeFi community, as well as specific communities with a proven commitment to active governance and an understanding of complex tokenomics.
+The initial distribution of OCE will be evenly distributed across eight staking pools: WETH, YFI, MKR, LEND, LINK, SNX, COMP, and ETH/AMPL Uniswap v2 LP tokens. These pools were chosen intentionally to reach a broad swath of the overall DeFi community, as well as specific communities with a proven commitment to active governance and an understanding of complex tokenomics.
 
 Following the launch of the initial distribution pools, a second distribution wave will be incentivized through a YAM/yCRV Uniswap pool. This pool will allow Uniswap's TWAP-based oracle to provide necessary input as the basis for rebase calculations, as well as provide liquidity for the rebase to purchase yCurve for the treasury.
 
@@ -41,7 +41,7 @@ Rebases are controlled by an external contract called the Rebaser. This is compa
 
 There are a requirements before rebases are active:
 <br />
-•	Liquid YAM/yCRV market<br/>
+•	Liquid OCE/yCRV market<br/>
 •	`init_twap()`<br/>
 •	`activate_rebasing()`<br/>
 
@@ -54,12 +54,12 @@ In a rebase, the order of operations are:
 •	dampen the rebase by the rebaseLag<br/>
 •	if positive calculate protocol mint amount<br/>
 •	change scaling factor, (in/de)flating the supply<br/>
-•	sync uniswap, mint, sell to uniswap, transfer excess YAM and bought yCRV to reserves<br/>
+•	sync uniswap, mint, sell to uniswap, transfer excess OCE and bought yCRV to reserves<br/>
 •	call any extra functions governance adds in the future (i.e. Balancer gulps)<br/>
 
 
 ## Governance
-Governance is entirely dictated by YAM holders from the start. Upon deployment, ownership of all YAM protocol contracts was relinquished to the timelocked Governance contract or removed entirely. At the very least, this can be seen as a reference implementation for a truly decentralized protocol.
+Governance is entirely dictated by OCE holders from the start. Upon deployment, ownership of all OCE protocol contracts was relinquished to the timelocked Governance contract or removed entirely. At the very least, this can be seen as a reference implementation for a truly decentralized protocol.
 
 # Development
 ### Building
