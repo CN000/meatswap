@@ -128,7 +128,7 @@ export const getCirculatingSupply = async (oce) => {
   let ocesDistributed = oce.toBigN(8 * timePassed * 250000 / 625000); //oces from first 8 pools
   let starttimePool2  = oce.toBigN(await oce.contracts.ycrv_pool.methods.starttime().call()).toNumber();
   timePassed = now["timestamp"] - starttime;
-  let pool2oces = oce.toBigN(timePassed * 1500000 / 625000); // oces from second pool. note: just accounts for first week
+  let pool2Oces = oce.toBigN(timePassed * 1500000 / 625000); // oces from second pool. note: just accounts for first week
   let circulating = pool2Oces.plus(ocesDistributed).times(scalingFactor).div(10**36).toFixed(2)
 
   return circulating
