@@ -343,7 +343,7 @@ contract OCEToken is OCEGovernanceToken {
     }
 }
 
-contract Oce is OceToken {
+contract OCE is OCEToken {
     /**
      * @notice Initialize the new money market
      * @param name_ ERC-20 name of this token
