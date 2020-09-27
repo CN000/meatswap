@@ -61,15 +61,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"NewImplementation\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation_\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"allowResign\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"becomeImplementationData\",\"type\":\"bytes\"}],\"name\":\"_setImplementation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"implementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"_setImplementation(address,bool,bytes)\":{\"params\":{\"allowResign\":\"Flag to indicate whether to call _resignImplementation on the old implementation\",\"becomeImplementationData\":\"The encoded bytes data to be passed to _becomeImplementation\",\"implementation_\":\"The address of the new implementation for delegation\"}}}},\"userdoc\":{\"methods\":{\"_setImplementation(address,bool,bytes)\":{\"notice\":\"Called by the gov to update the implementation of the delegator\"}}}},\"settings\":{\"compilationTarget\":{\"/mnt/d/www-ts/oceanswap/contracts/token/OCEDelegate.sol\":\"OCEDelegatorInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":50000},\"remappings\":[]},\"sources\":{\"/mnt/d/www-ts/oceanswap/contracts/lib/SafeMath.sol\":{\"keccak256\":\"0x47009cdfd3e70d0008cf8ddd65e9dd457d357766412dde1a2b3bbd8ed630ac78\",\"urls\":[\"bzz-raw://12b79b00abb9d4522864207f2b6631cd974285e269153efd775961a4c6ca4f51\",\"dweb:/ipfs/QmW9XJbYKRg7ovwfZVbv5r6a9vFUpUfXivNZNjG4461QmK\"]},\"/mnt/d/www-ts/oceanswap/contracts/token/OCE.sol\":{\"keccak256\":\"0xfacf66de260657a213179c1652b23f6e391caa7e02c531049a173a0b61c46308\",\"urls\":[\"bzz-raw://72d99cae0c7e797920d1dcc1ffb3d89fdd950ea268cb20d2fbc837595ce1d75e\",\"dweb:/ipfs/QmXA9mFofvDhj1BF5XC7FTXyusjUePrYCiPwEo4pstN4EE\"]},\"/mnt/d/www-ts/oceanswap/contracts/token/OCEDelegate.sol\":{\"keccak256\":\"0xd00daaa499db09963a16904d0d8ca19fa0b89f8931bbeba673f7a2ccfef855a1\",\"urls\":[\"bzz-raw://c760704a0a9f661b0552caad1efe8b6808fbacfb5492f84355a0b67908ebef87\",\"dweb:/ipfs/QmdPYXqi5iWqzeZzEPYyuxCMTBb9is49Lg1mh5pWKMHmsZ\"]},\"/mnt/d/www-ts/oceanswap/contracts/token/OCEGovernance.sol\":{\"keccak256\":\"0xda3a9ea84ebd267903c89e6e7469987c024378037cd3debb36e091bec422ea44\",\"urls\":[\"bzz-raw://0453ad31061a410d115f282d38e3a95a43ed7523624df9588096b9456b5c1a47\",\"dweb:/ipfs/QmbYSnLWdtrBb2ReAy7uw4nj2ZGX1iCr4EHK9mqHaSbYy3\"]},\"/mnt/d/www-ts/oceanswap/contracts/token/OCEGovernanceStorage.sol\":{\"keccak256\":\"0x6e69283b8b7a5a5e59b31f360a99daa2d3cb355b0bc85f0cc6ce858b618a29c3\",\"urls\":[\"bzz-raw://483b77200d9b7e94e9d19789bb70aefd20423f64443d054821515c6c4fae543f\",\"dweb:/ipfs/QmYC3S4ECoaa38cHch9HaHvfudp3XmKnYfZb8VbtKA8aM8\"]},\"/mnt/d/www-ts/oceanswap/contracts/token/OCETokenInterface.sol\":{\"keccak256\":\"0x4c6f7288b9e4fea337d046ad5896419719381c601428f68fadd8d7dea02fed4e\",\"urls\":[\"bzz-raw://34aff8fe2d4a5f63d5f849af5f4835c6925a53f7c1568a66e2c8a540ae7b16c7\",\"dweb:/ipfs/QmV3t2e65S1cRWJxqNXzBn7dGM8sXKrDMGP1AWAHYBrP9T\"]},\"/mnt/d/www-ts/oceanswap/contracts/token/OCETokenStorage.sol\":{\"keccak256\":\"0x5a35ef6a99611b67350ee01e7275bd4705ce4c2d5945700317e31132cf456c02\",\"urls\":[\"bzz-raw://14d7a120038e264e295c1be0b9b6570ff5351c6bf66d6bf040bd56bc685d2ab1\",\"dweb:/ipfs/QmSsaBJnKF33ekPGTqKeE2VNMVwB5uVcFtjzc9Zec1RCtW\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"NewImplementation\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation_\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"allowResign\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"becomeImplementationData\",\"type\":\"bytes\"}],\"name\":\"_setImplementation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"implementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"_setImplementation(address,bool,bytes)\":{\"params\":{\"allowResign\":\"Flag to indicate whether to call _resignImplementation on the old implementation\",\"becomeImplementationData\":\"The encoded bytes data to be passed to _becomeImplementation\",\"implementation_\":\"The address of the new implementation for delegation\"}}}},\"userdoc\":{\"methods\":{\"_setImplementation(address,bool,bytes)\":{\"notice\":\"Called by the gov to update the implementation of the delegator\"}}}},\"settings\":{\"compilationTarget\":{\"/www-ts/fishswap/contracts/token/OCEDelegate.sol\":\"OCEDelegatorInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":50000},\"remappings\":[]},\"sources\":{\"/www-ts/fishswap/contracts/lib/SafeMath.sol\":{\"keccak256\":\"0xfb72ae2642cad8f5da1644433dbcc12681f8064335dff144623f0514dc7922c6\",\"urls\":[\"bzz-raw://c174cb41d37d772336abf35cfef58015621ff96b834819531a65a67594aec5c4\",\"dweb:/ipfs/Qmdw3SxV2kaqdCoY4NBBXYcbX6baWbvGjJ6XP8jaH9pvyu\"]},\"/www-ts/fishswap/contracts/token/OCE.sol\":{\"keccak256\":\"0xc8d5dddc09e03efa9d30c7e462bc7396ecf1d9922b1132088bdd48efd593dff0\",\"urls\":[\"bzz-raw://4bcab3ebd417514e6e79fa4842b0259da53e1a67f4faa7252d40d6afdfbb86fd\",\"dweb:/ipfs/QmVKAQnDYe8w9BPC6peh6TMMrAAJw7jEix6YNrh4ppaDJ4\"]},\"/www-ts/fishswap/contracts/token/OCEDelegate.sol\":{\"keccak256\":\"0x7876c933e4389b9c581a0a0edc13b79ca403fcab45ec8bfb9d55494bfeb60054\",\"urls\":[\"bzz-raw://a9e89a6fcf37a894d99cbac56acff8a4c684e569f426a6d6eebc997d7c11d4a4\",\"dweb:/ipfs/QmRzSTdQvekeH6niNQUS2mVJVPuj8uc39mtes3NMGwAzdE\"]},\"/www-ts/fishswap/contracts/token/OCEGovernance.sol\":{\"keccak256\":\"0x26978b0ad7b6b0b69e0fabff3f5b8aae5a344b734b4289b95ed38a4f51bba2ca\",\"urls\":[\"bzz-raw://4c6394578f753f013a1bead53c9a20b50bce8d87336a5bc674749a59743f91f7\",\"dweb:/ipfs/QmYf421udtwVyaqRRvWZZdSmXQZDbKgRvxMmrww3nVm6oN\"]},\"/www-ts/fishswap/contracts/token/OCEGovernanceStorage.sol\":{\"keccak256\":\"0x8ace92e758170c5df8657888602218d07e413aea890e8442cdc05344e7726e2f\",\"urls\":[\"bzz-raw://ea09d7a4343e746c6b7028860303aee03f53a27d38345ad6317fd71cb53f4b50\",\"dweb:/ipfs/QmdESQFChJrmE9rxJu3x1AhvS4EDzrgmHHJWFYX3Ybbq8H\"]},\"/www-ts/fishswap/contracts/token/OCETokenInterface.sol\":{\"keccak256\":\"0xe794a25d6850c0f871c5f2db006bed43ad5cba27252d0c8cac70dc9b25aaa77c\",\"urls\":[\"bzz-raw://9093396267c8bba7c8b268862f5603a83b67d4bc7297ecb89b2c7a866cdfa6c2\",\"dweb:/ipfs/QmPQTMXwm8nDrpUNtWLjDD7WkkaypSscFDGBiZrsWVa23c\"]},\"/www-ts/fishswap/contracts/token/OCETokenStorage.sol\":{\"keccak256\":\"0x136d2563797b6a74657651560c9f06983cbb142454386d8f52bd935a0bfac0f1\",\"urls\":[\"bzz-raw://3d5aa9b31a62a35b761310dc3e3daac0f51c7cb6df77748ba680d14291ff328b\",\"dweb:/ipfs/QmS86mMrTcEdJqTaoQT1K6HcvxN4GGhciJgyp6hBBNt8Mv\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.5.17;\r\n\r\nimport \"./OCE.sol\";\r\n\r\ncontract OCEDelegationStorage {\r\n    /**\r\n     * @notice Implementation address for this contract\r\n     */\r\n    address public implementation;\r\n}\r\n\r\ncontract OCEDelegatorInterface is OCEDelegationStorage {\r\n    /**\r\n     * @notice Emitted when implementation is changed\r\n     */\r\n    event NewImplementation(address oldImplementation, address newImplementation);\r\n\r\n    /**\r\n     * @notice Called by the gov to update the implementation of the delegator\r\n     * @param implementation_ The address of the new implementation for delegation\r\n     * @param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\r\n     * @param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation\r\n     */\r\n    function _setImplementation(address implementation_, bool allowResign, bytes memory becomeImplementationData) public;\r\n}\r\n\r\ncontract OCEDelegateInterface is OCEDelegationStorage {\r\n    /**\r\n     * @notice Called by the delegator on a delegate to initialize it for duty\r\n     * @dev Should revert if any issues arise which make it unfit for delegation\r\n     * @param data The encoded bytes data for any initialization\r\n     */\r\n    function _becomeImplementation(bytes memory data) public;\r\n\r\n    /**\r\n     * @notice Called by the delegator on a delegate to forfeit its responsibility\r\n     */\r\n    function _resignImplementation() public;\r\n}\r\n\r\n\r\ncontract OCEDelegate is OCE, OCEDelegateInterface {\r\n    /**\r\n     * @notice Construct an empty delegate\r\n     */\r\n    constructor() public {}\r\n\r\n    /**\r\n     * @notice Called by the delegator on a delegate to initialize it for duty\r\n     * @param data The encoded bytes data for any initialization\r\n     */\r\n    function _becomeImplementation(bytes memory data) public {\r\n        // Shh -- currently unused\r\n        data;\r\n\r\n        // Shh -- we don't ever want this hook to be marked pure\r\n        if (false) {\r\n            implementation = address(0);\r\n        }\r\n\r\n        require(msg.sender == gov, \"only the gov may call _becomeImplementation\");\r\n    }\r\n\r\n    /**\r\n     * @notice Called by the delegator on a delegate to forfeit its responsibility\r\n     */\r\n    function _resignImplementation() public {\r\n        // Shh -- we don't ever want this hook to be marked pure\r\n        if (false) {\r\n            implementation = address(0);\r\n        }\r\n\r\n        require(msg.sender == gov, \"only the gov may call _resignImplementation\");\r\n    }\r\n}\r\n",
-  "sourcePath": "/mnt/d/www-ts/oceanswap/contracts/token/OCEDelegate.sol",
+  "source": "pragma solidity 0.5.17;\n\nimport \"./OCE.sol\";\n\ncontract OCEDelegationStorage {\n    /**\n     * @notice Implementation address for this contract\n     */\n    address public implementation;\n}\n\ncontract OCEDelegatorInterface is OCEDelegationStorage {\n    /**\n     * @notice Emitted when implementation is changed\n     */\n    event NewImplementation(address oldImplementation, address newImplementation);\n\n    /**\n     * @notice Called by the gov to update the implementation of the delegator\n     * @param implementation_ The address of the new implementation for delegation\n     * @param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\n     * @param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation\n     */\n    function _setImplementation(address implementation_, bool allowResign, bytes memory becomeImplementationData) public;\n}\n\ncontract OCEDelegateInterface is OCEDelegationStorage {\n    /**\n     * @notice Called by the delegator on a delegate to initialize it for duty\n     * @dev Should revert if any issues arise which make it unfit for delegation\n     * @param data The encoded bytes data for any initialization\n     */\n    function _becomeImplementation(bytes memory data) public;\n\n    /**\n     * @notice Called by the delegator on a delegate to forfeit its responsibility\n     */\n    function _resignImplementation() public;\n}\n\n\ncontract OCEDelegate is OCE, OCEDelegateInterface {\n    /**\n     * @notice Construct an empty delegate\n     */\n    constructor() public {}\n\n    /**\n     * @notice Called by the delegator on a delegate to initialize it for duty\n     * @param data The encoded bytes data for any initialization\n     */\n    function _becomeImplementation(bytes memory data) public {\n        // Shh -- currently unused\n        data;\n\n        // Shh -- we don't ever want this hook to be marked pure\n        if (false) {\n            implementation = address(0);\n        }\n\n        require(msg.sender == gov, \"only the gov may call _becomeImplementation\");\n    }\n\n    /**\n     * @notice Called by the delegator on a delegate to forfeit its responsibility\n     */\n    function _resignImplementation() public {\n        // Shh -- we don't ever want this hook to be marked pure\n        if (false) {\n            implementation = address(0);\n        }\n\n        require(msg.sender == gov, \"only the gov may call _resignImplementation\");\n    }\n}\n",
+  "sourcePath": "/www-ts/fishswap/contracts/token/OCEDelegate.sol",
   "ast": {
-    "absolutePath": "/mnt/d/www-ts/oceanswap/contracts/token/OCEDelegate.sol",
+    "absolutePath": "/www-ts/fishswap/contracts/token/OCEDelegate.sol",
     "exportedSymbols": {
       "OCEDelegate": [
         17985
@@ -98,13 +98,13 @@
         "src": "0:23:23"
       },
       {
-        "absolutePath": "/mnt/d/www-ts/oceanswap/contracts/token/OCE.sol",
+        "absolutePath": "/www-ts/fishswap/contracts/token/OCE.sol",
         "file": "./OCE.sol",
         "id": 17898,
         "nodeType": "ImportDirective",
         "scope": 17986,
         "sourceUnit": 17896,
-        "src": "27:19:23",
+        "src": "25:19:23",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -127,7 +127,7 @@
             "name": "implementation",
             "nodeType": "VariableDeclaration",
             "scope": 17901,
-            "src": "162:29:23",
+            "src": "154:29:23",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -138,7 +138,7 @@
               "id": 17899,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "162:7:23",
+              "src": "154:7:23",
               "stateMutability": "nonpayable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
@@ -150,7 +150,7 @@
           }
         ],
         "scope": 17986,
-        "src": "50:145:23"
+        "src": "46:140:23"
       },
       {
         "baseContracts": [
@@ -162,7 +162,7 @@
               "name": "OCEDelegationStorage",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17901,
-              "src": "233:20:23",
+              "src": "222:20:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCEDelegationStorage_$17901",
                 "typeString": "contract OCEDelegationStorage"
@@ -170,7 +170,7 @@
             },
             "id": 17903,
             "nodeType": "InheritanceSpecifier",
-            "src": "233:20:23"
+            "src": "222:20:23"
           }
         ],
         "contractDependencies": [
@@ -204,7 +204,7 @@
                   "name": "oldImplementation",
                   "nodeType": "VariableDeclaration",
                   "scope": 17909,
-                  "src": "358:25:23",
+                  "src": "343:25:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -215,7 +215,7 @@
                     "id": 17904,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "358:7:23",
+                    "src": "343:7:23",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -232,7 +232,7 @@
                   "name": "newImplementation",
                   "nodeType": "VariableDeclaration",
                   "scope": 17909,
-                  "src": "385:25:23",
+                  "src": "370:25:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -243,7 +243,7 @@
                     "id": 17906,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "385:7:23",
+                    "src": "370:7:23",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -254,9 +254,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "357:54:23"
+              "src": "342:54:23"
             },
-            "src": "334:78:23"
+            "src": "319:78:23"
           },
           {
             "body": null,
@@ -277,7 +277,7 @@
                   "name": "implementation_",
                   "nodeType": "VariableDeclaration",
                   "scope": 17918,
-                  "src": "839:23:23",
+                  "src": "816:23:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -288,7 +288,7 @@
                     "id": 17910,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "839:7:23",
+                    "src": "816:7:23",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -304,7 +304,7 @@
                   "name": "allowResign",
                   "nodeType": "VariableDeclaration",
                   "scope": 17918,
-                  "src": "864:16:23",
+                  "src": "841:16:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -315,7 +315,7 @@
                     "id": 17912,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "864:4:23",
+                    "src": "841:4:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -330,7 +330,7 @@
                   "name": "becomeImplementationData",
                   "nodeType": "VariableDeclaration",
                   "scope": 17918,
-                  "src": "882:37:23",
+                  "src": "859:37:23",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -341,7 +341,7 @@
                     "id": 17914,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "882:5:23",
+                    "src": "859:5:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -351,23 +351,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "838:82:23"
+              "src": "815:82:23"
             },
             "returnParameters": {
               "id": 17917,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "927:0:23"
+              "src": "904:0:23"
             },
             "scope": 17919,
-            "src": "811:117:23",
+            "src": "788:117:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17986,
-        "src": "199:732:23"
+        "src": "188:719:23"
       },
       {
         "baseContracts": [
@@ -379,7 +379,7 @@
               "name": "OCEDelegationStorage",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17901,
-              "src": "968:20:23",
+              "src": "942:20:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCEDelegationStorage_$17901",
                 "typeString": "contract OCEDelegationStorage"
@@ -387,7 +387,7 @@
             },
             "id": 17921,
             "nodeType": "InheritanceSpecifier",
-            "src": "968:20:23"
+            "src": "942:20:23"
           }
         ],
         "contractDependencies": [
@@ -423,7 +423,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 17926,
-                  "src": "1273:17:23",
+                  "src": "1241:17:23",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -434,7 +434,7 @@
                     "id": 17922,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1273:5:23",
+                    "src": "1241:5:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -444,16 +444,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1272:19:23"
+              "src": "1240:19:23"
             },
             "returnParameters": {
               "id": 17925,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1298:0:23"
+              "src": "1266:0:23"
             },
             "scope": 17930,
-            "src": "1242:57:23",
+            "src": "1210:57:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -471,23 +471,23 @@
               "id": 17927,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1439:2:23"
+              "src": "1402:2:23"
             },
             "returnParameters": {
               "id": 17928,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1448:0:23"
+              "src": "1411:0:23"
             },
             "scope": 17930,
-            "src": "1409:40:23",
+            "src": "1372:40:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17986,
-        "src": "935:517:23"
+        "src": "909:505:23"
       },
       {
         "baseContracts": [
@@ -499,7 +499,7 @@
               "name": "OCE",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17895,
-              "src": "1482:3:23",
+              "src": "1441:3:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCE_$17895",
                 "typeString": "contract OCE"
@@ -507,7 +507,7 @@
             },
             "id": 17932,
             "nodeType": "InheritanceSpecifier",
-            "src": "1482:3:23"
+            "src": "1441:3:23"
           },
           {
             "arguments": null,
@@ -517,7 +517,7 @@
               "name": "OCEDelegateInterface",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17930,
-              "src": "1487:20:23",
+              "src": "1446:20:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCEDelegateInterface_$17930",
                 "typeString": "contract OCEDelegateInterface"
@@ -525,7 +525,7 @@
             },
             "id": 17934,
             "nodeType": "InheritanceSpecifier",
-            "src": "1487:20:23"
+            "src": "1446:20:23"
           }
         ],
         "contractDependencies": [
@@ -560,7 +560,7 @@
             "body": {
               "id": 17937,
               "nodeType": "Block",
-              "src": "1598:2:23",
+              "src": "1553:2:23",
               "statements": []
             },
             "documentation": "@notice Construct an empty delegate",
@@ -574,16 +574,16 @@
               "id": 17935,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1588:2:23"
+              "src": "1543:2:23"
             },
             "returnParameters": {
               "id": 17936,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1598:0:23"
+              "src": "1553:0:23"
             },
             "scope": 17985,
-            "src": "1577:23:23",
+            "src": "1532:23:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -592,7 +592,7 @@
             "body": {
               "id": 17962,
               "nodeType": "Block",
-              "src": "1829:288:23",
+              "src": "1778:278:23",
               "statements": [
                 {
                   "expression": {
@@ -602,7 +602,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 17940,
-                    "src": "1876:4:23",
+                    "src": "1823:4:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_memory_ptr",
                       "typeString": "bytes memory"
@@ -610,7 +610,7 @@
                   },
                   "id": 17944,
                   "nodeType": "ExpressionStatement",
-                  "src": "1876:4:23"
+                  "src": "1823:4:23"
                 },
                 {
                   "condition": {
@@ -623,7 +623,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1963:5:23",
+                    "src": "1907:5:23",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -634,11 +634,11 @@
                   "falseBody": null,
                   "id": 17953,
                   "nodeType": "IfStatement",
-                  "src": "1959:65:23",
+                  "src": "1903:63:23",
                   "trueBody": {
                     "id": 17952,
                     "nodeType": "Block",
-                    "src": "1970:54:23",
+                    "src": "1914:52:23",
                     "statements": [
                       {
                         "expression": {
@@ -655,7 +655,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 17900,
-                            "src": "1985:14:23",
+                            "src": "1928:14:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -676,7 +676,7 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "2010:1:23",
+                                "src": "1953:1:23",
                                 "subdenomination": null,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_rational_0_by_1",
@@ -698,7 +698,7 @@
                               "isPure": true,
                               "lValueRequested": false,
                               "nodeType": "ElementaryTypeNameExpression",
-                              "src": "2002:7:23",
+                              "src": "1945:7:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_type$_t_address_$",
                                 "typeString": "type(address)"
@@ -713,13 +713,13 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "2002:10:23",
+                            "src": "1945:10:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address_payable",
                               "typeString": "address payable"
                             }
                           },
-                          "src": "1985:27:23",
+                          "src": "1928:27:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -727,7 +727,7 @@
                         },
                         "id": 17951,
                         "nodeType": "ExpressionStatement",
-                        "src": "1985:27:23"
+                        "src": "1928:27:23"
                       }
                     ]
                   }
@@ -756,7 +756,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 19397,
-                            "src": "2044:3:23",
+                            "src": "1984:3:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
@@ -770,7 +770,7 @@
                           "memberName": "sender",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "2044:10:23",
+                          "src": "1984:10:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
@@ -785,13 +785,13 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 19349,
-                          "src": "2058:3:23",
+                          "src": "1998:3:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-                        "src": "2044:17:23",
+                        "src": "1984:17:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -807,7 +807,7 @@
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "2063:45:23",
+                        "src": "2003:45:23",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_87685d43a4a716fc45a02db33f3087a46399d1c639f49af006d2840dd7715172",
@@ -835,7 +835,7 @@
                         19401
                       ],
                       "referencedDeclaration": 19401,
-                      "src": "2036:7:23",
+                      "src": "1976:7:23",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
@@ -849,7 +849,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2036:73:23",
+                    "src": "1976:73:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -857,7 +857,7 @@
                   },
                   "id": 17961,
                   "nodeType": "ExpressionStatement",
-                  "src": "2036:73:23"
+                  "src": "1976:73:23"
                 }
               ]
             },
@@ -878,7 +878,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 17963,
-                  "src": "1803:17:23",
+                  "src": "1752:17:23",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -889,7 +889,7 @@
                     "id": 17939,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1803:5:23",
+                    "src": "1752:5:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -899,16 +899,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1802:19:23"
+              "src": "1751:19:23"
             },
             "returnParameters": {
               "id": 17942,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1829:0:23"
+              "src": "1778:0:23"
             },
             "scope": 17985,
-            "src": "1772:345:23",
+            "src": "1721:335:23",
             "stateMutability": "nonpayable",
             "superFunction": 17926,
             "visibility": "public"
@@ -917,7 +917,7 @@
             "body": {
               "id": 17983,
               "nodeType": "Block",
-              "src": "2267:235:23",
+              "src": "2201:228:23",
               "statements": [
                 {
                   "condition": {
@@ -930,7 +930,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "2348:5:23",
+                    "src": "2280:5:23",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -941,11 +941,11 @@
                   "falseBody": null,
                   "id": 17974,
                   "nodeType": "IfStatement",
-                  "src": "2344:65:23",
+                  "src": "2276:63:23",
                   "trueBody": {
                     "id": 17973,
                     "nodeType": "Block",
-                    "src": "2355:54:23",
+                    "src": "2287:52:23",
                     "statements": [
                       {
                         "expression": {
@@ -962,7 +962,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 17900,
-                            "src": "2370:14:23",
+                            "src": "2301:14:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -983,7 +983,7 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "2395:1:23",
+                                "src": "2326:1:23",
                                 "subdenomination": null,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_rational_0_by_1",
@@ -1005,7 +1005,7 @@
                               "isPure": true,
                               "lValueRequested": false,
                               "nodeType": "ElementaryTypeNameExpression",
-                              "src": "2387:7:23",
+                              "src": "2318:7:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_type$_t_address_$",
                                 "typeString": "type(address)"
@@ -1020,13 +1020,13 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "2387:10:23",
+                            "src": "2318:10:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address_payable",
                               "typeString": "address payable"
                             }
                           },
-                          "src": "2370:27:23",
+                          "src": "2301:27:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1034,7 +1034,7 @@
                         },
                         "id": 17972,
                         "nodeType": "ExpressionStatement",
-                        "src": "2370:27:23"
+                        "src": "2301:27:23"
                       }
                     ]
                   }
@@ -1063,7 +1063,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 19397,
-                            "src": "2429:3:23",
+                            "src": "2357:3:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
@@ -1077,7 +1077,7 @@
                           "memberName": "sender",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "2429:10:23",
+                          "src": "2357:10:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
@@ -1092,13 +1092,13 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 19349,
-                          "src": "2443:3:23",
+                          "src": "2371:3:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-                        "src": "2429:17:23",
+                        "src": "2357:17:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -1114,7 +1114,7 @@
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "2448:45:23",
+                        "src": "2376:45:23",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_34becc511830092491b9ed5bc1b7ad636216495b19fac8d69f13bac5fa3b5329",
@@ -1142,7 +1142,7 @@
                         19401
                       ],
                       "referencedDeclaration": 19401,
-                      "src": "2421:7:23",
+                      "src": "2349:7:23",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
@@ -1156,7 +1156,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2421:73:23",
+                    "src": "2349:73:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -1164,7 +1164,7 @@
                   },
                   "id": 17982,
                   "nodeType": "ExpressionStatement",
-                  "src": "2421:73:23"
+                  "src": "2349:73:23"
                 }
               ]
             },
@@ -1179,29 +1179,29 @@
               "id": 17964,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2257:2:23"
+              "src": "2191:2:23"
             },
             "returnParameters": {
               "id": 17965,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2267:0:23"
+              "src": "2201:0:23"
             },
             "scope": 17985,
-            "src": "2227:275:23",
+            "src": "2161:268:23",
             "stateMutability": "nonpayable",
             "superFunction": 17929,
             "visibility": "public"
           }
         ],
         "scope": 17986,
-        "src": "1458:1047:23"
+        "src": "1417:1014:23"
       }
     ],
-    "src": "0:2507:23"
+    "src": "0:2432:23"
   },
   "legacyAST": {
-    "absolutePath": "/mnt/d/www-ts/oceanswap/contracts/token/OCEDelegate.sol",
+    "absolutePath": "/www-ts/fishswap/contracts/token/OCEDelegate.sol",
     "exportedSymbols": {
       "OCEDelegate": [
         17985
@@ -1230,13 +1230,13 @@
         "src": "0:23:23"
       },
       {
-        "absolutePath": "/mnt/d/www-ts/oceanswap/contracts/token/OCE.sol",
+        "absolutePath": "/www-ts/fishswap/contracts/token/OCE.sol",
         "file": "./OCE.sol",
         "id": 17898,
         "nodeType": "ImportDirective",
         "scope": 17986,
         "sourceUnit": 17896,
-        "src": "27:19:23",
+        "src": "25:19:23",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -1259,7 +1259,7 @@
             "name": "implementation",
             "nodeType": "VariableDeclaration",
             "scope": 17901,
-            "src": "162:29:23",
+            "src": "154:29:23",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1270,7 +1270,7 @@
               "id": 17899,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "162:7:23",
+              "src": "154:7:23",
               "stateMutability": "nonpayable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
@@ -1282,7 +1282,7 @@
           }
         ],
         "scope": 17986,
-        "src": "50:145:23"
+        "src": "46:140:23"
       },
       {
         "baseContracts": [
@@ -1294,7 +1294,7 @@
               "name": "OCEDelegationStorage",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17901,
-              "src": "233:20:23",
+              "src": "222:20:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCEDelegationStorage_$17901",
                 "typeString": "contract OCEDelegationStorage"
@@ -1302,7 +1302,7 @@
             },
             "id": 17903,
             "nodeType": "InheritanceSpecifier",
-            "src": "233:20:23"
+            "src": "222:20:23"
           }
         ],
         "contractDependencies": [
@@ -1336,7 +1336,7 @@
                   "name": "oldImplementation",
                   "nodeType": "VariableDeclaration",
                   "scope": 17909,
-                  "src": "358:25:23",
+                  "src": "343:25:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1347,7 +1347,7 @@
                     "id": 17904,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "358:7:23",
+                    "src": "343:7:23",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1364,7 +1364,7 @@
                   "name": "newImplementation",
                   "nodeType": "VariableDeclaration",
                   "scope": 17909,
-                  "src": "385:25:23",
+                  "src": "370:25:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1375,7 +1375,7 @@
                     "id": 17906,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "385:7:23",
+                    "src": "370:7:23",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1386,9 +1386,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "357:54:23"
+              "src": "342:54:23"
             },
-            "src": "334:78:23"
+            "src": "319:78:23"
           },
           {
             "body": null,
@@ -1409,7 +1409,7 @@
                   "name": "implementation_",
                   "nodeType": "VariableDeclaration",
                   "scope": 17918,
-                  "src": "839:23:23",
+                  "src": "816:23:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1420,7 +1420,7 @@
                     "id": 17910,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "839:7:23",
+                    "src": "816:7:23",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1436,7 +1436,7 @@
                   "name": "allowResign",
                   "nodeType": "VariableDeclaration",
                   "scope": 17918,
-                  "src": "864:16:23",
+                  "src": "841:16:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1447,7 +1447,7 @@
                     "id": 17912,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "864:4:23",
+                    "src": "841:4:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1462,7 +1462,7 @@
                   "name": "becomeImplementationData",
                   "nodeType": "VariableDeclaration",
                   "scope": 17918,
-                  "src": "882:37:23",
+                  "src": "859:37:23",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1473,7 +1473,7 @@
                     "id": 17914,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "882:5:23",
+                    "src": "859:5:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -1483,23 +1483,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "838:82:23"
+              "src": "815:82:23"
             },
             "returnParameters": {
               "id": 17917,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "927:0:23"
+              "src": "904:0:23"
             },
             "scope": 17919,
-            "src": "811:117:23",
+            "src": "788:117:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17986,
-        "src": "199:732:23"
+        "src": "188:719:23"
       },
       {
         "baseContracts": [
@@ -1511,7 +1511,7 @@
               "name": "OCEDelegationStorage",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17901,
-              "src": "968:20:23",
+              "src": "942:20:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCEDelegationStorage_$17901",
                 "typeString": "contract OCEDelegationStorage"
@@ -1519,7 +1519,7 @@
             },
             "id": 17921,
             "nodeType": "InheritanceSpecifier",
-            "src": "968:20:23"
+            "src": "942:20:23"
           }
         ],
         "contractDependencies": [
@@ -1555,7 +1555,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 17926,
-                  "src": "1273:17:23",
+                  "src": "1241:17:23",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1566,7 +1566,7 @@
                     "id": 17922,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1273:5:23",
+                    "src": "1241:5:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -1576,16 +1576,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1272:19:23"
+              "src": "1240:19:23"
             },
             "returnParameters": {
               "id": 17925,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1298:0:23"
+              "src": "1266:0:23"
             },
             "scope": 17930,
-            "src": "1242:57:23",
+            "src": "1210:57:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1603,23 +1603,23 @@
               "id": 17927,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1439:2:23"
+              "src": "1402:2:23"
             },
             "returnParameters": {
               "id": 17928,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1448:0:23"
+              "src": "1411:0:23"
             },
             "scope": 17930,
-            "src": "1409:40:23",
+            "src": "1372:40:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17986,
-        "src": "935:517:23"
+        "src": "909:505:23"
       },
       {
         "baseContracts": [
@@ -1631,7 +1631,7 @@
               "name": "OCE",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17895,
-              "src": "1482:3:23",
+              "src": "1441:3:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCE_$17895",
                 "typeString": "contract OCE"
@@ -1639,7 +1639,7 @@
             },
             "id": 17932,
             "nodeType": "InheritanceSpecifier",
-            "src": "1482:3:23"
+            "src": "1441:3:23"
           },
           {
             "arguments": null,
@@ -1649,7 +1649,7 @@
               "name": "OCEDelegateInterface",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 17930,
-              "src": "1487:20:23",
+              "src": "1446:20:23",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_OCEDelegateInterface_$17930",
                 "typeString": "contract OCEDelegateInterface"
@@ -1657,7 +1657,7 @@
             },
             "id": 17934,
             "nodeType": "InheritanceSpecifier",
-            "src": "1487:20:23"
+            "src": "1446:20:23"
           }
         ],
         "contractDependencies": [
@@ -1692,7 +1692,7 @@
             "body": {
               "id": 17937,
               "nodeType": "Block",
-              "src": "1598:2:23",
+              "src": "1553:2:23",
               "statements": []
             },
             "documentation": "@notice Construct an empty delegate",
@@ -1706,16 +1706,16 @@
               "id": 17935,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1588:2:23"
+              "src": "1543:2:23"
             },
             "returnParameters": {
               "id": 17936,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1598:0:23"
+              "src": "1553:0:23"
             },
             "scope": 17985,
-            "src": "1577:23:23",
+            "src": "1532:23:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1724,7 +1724,7 @@
             "body": {
               "id": 17962,
               "nodeType": "Block",
-              "src": "1829:288:23",
+              "src": "1778:278:23",
               "statements": [
                 {
                   "expression": {
@@ -1734,7 +1734,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 17940,
-                    "src": "1876:4:23",
+                    "src": "1823:4:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_memory_ptr",
                       "typeString": "bytes memory"
@@ -1742,7 +1742,7 @@
                   },
                   "id": 17944,
                   "nodeType": "ExpressionStatement",
-                  "src": "1876:4:23"
+                  "src": "1823:4:23"
                 },
                 {
                   "condition": {
@@ -1755,7 +1755,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1963:5:23",
+                    "src": "1907:5:23",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -1766,11 +1766,11 @@
                   "falseBody": null,
                   "id": 17953,
                   "nodeType": "IfStatement",
-                  "src": "1959:65:23",
+                  "src": "1903:63:23",
                   "trueBody": {
                     "id": 17952,
                     "nodeType": "Block",
-                    "src": "1970:54:23",
+                    "src": "1914:52:23",
                     "statements": [
                       {
                         "expression": {
@@ -1787,7 +1787,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 17900,
-                            "src": "1985:14:23",
+                            "src": "1928:14:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -1808,7 +1808,7 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "2010:1:23",
+                                "src": "1953:1:23",
                                 "subdenomination": null,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_rational_0_by_1",
@@ -1830,7 +1830,7 @@
                               "isPure": true,
                               "lValueRequested": false,
                               "nodeType": "ElementaryTypeNameExpression",
-                              "src": "2002:7:23",
+                              "src": "1945:7:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_type$_t_address_$",
                                 "typeString": "type(address)"
@@ -1845,13 +1845,13 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "2002:10:23",
+                            "src": "1945:10:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address_payable",
                               "typeString": "address payable"
                             }
                           },
-                          "src": "1985:27:23",
+                          "src": "1928:27:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1859,7 +1859,7 @@
                         },
                         "id": 17951,
                         "nodeType": "ExpressionStatement",
-                        "src": "1985:27:23"
+                        "src": "1928:27:23"
                       }
                     ]
                   }
@@ -1888,7 +1888,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 19397,
-                            "src": "2044:3:23",
+                            "src": "1984:3:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
@@ -1902,7 +1902,7 @@
                           "memberName": "sender",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "2044:10:23",
+                          "src": "1984:10:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
@@ -1917,13 +1917,13 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 19349,
-                          "src": "2058:3:23",
+                          "src": "1998:3:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-                        "src": "2044:17:23",
+                        "src": "1984:17:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -1939,7 +1939,7 @@
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "2063:45:23",
+                        "src": "2003:45:23",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_87685d43a4a716fc45a02db33f3087a46399d1c639f49af006d2840dd7715172",
@@ -1967,7 +1967,7 @@
                         19401
                       ],
                       "referencedDeclaration": 19401,
-                      "src": "2036:7:23",
+                      "src": "1976:7:23",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
@@ -1981,7 +1981,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2036:73:23",
+                    "src": "1976:73:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -1989,7 +1989,7 @@
                   },
                   "id": 17961,
                   "nodeType": "ExpressionStatement",
-                  "src": "2036:73:23"
+                  "src": "1976:73:23"
                 }
               ]
             },
@@ -2010,7 +2010,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 17963,
-                  "src": "1803:17:23",
+                  "src": "1752:17:23",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2021,7 +2021,7 @@
                     "id": 17939,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1803:5:23",
+                    "src": "1752:5:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -2031,16 +2031,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1802:19:23"
+              "src": "1751:19:23"
             },
             "returnParameters": {
               "id": 17942,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1829:0:23"
+              "src": "1778:0:23"
             },
             "scope": 17985,
-            "src": "1772:345:23",
+            "src": "1721:335:23",
             "stateMutability": "nonpayable",
             "superFunction": 17926,
             "visibility": "public"
@@ -2049,7 +2049,7 @@
             "body": {
               "id": 17983,
               "nodeType": "Block",
-              "src": "2267:235:23",
+              "src": "2201:228:23",
               "statements": [
                 {
                   "condition": {
@@ -2062,7 +2062,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "2348:5:23",
+                    "src": "2280:5:23",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2073,11 +2073,11 @@
                   "falseBody": null,
                   "id": 17974,
                   "nodeType": "IfStatement",
-                  "src": "2344:65:23",
+                  "src": "2276:63:23",
                   "trueBody": {
                     "id": 17973,
                     "nodeType": "Block",
-                    "src": "2355:54:23",
+                    "src": "2287:52:23",
                     "statements": [
                       {
                         "expression": {
@@ -2094,7 +2094,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 17900,
-                            "src": "2370:14:23",
+                            "src": "2301:14:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -2115,7 +2115,7 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "2395:1:23",
+                                "src": "2326:1:23",
                                 "subdenomination": null,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_rational_0_by_1",
@@ -2137,7 +2137,7 @@
                               "isPure": true,
                               "lValueRequested": false,
                               "nodeType": "ElementaryTypeNameExpression",
-                              "src": "2387:7:23",
+                              "src": "2318:7:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_type$_t_address_$",
                                 "typeString": "type(address)"
@@ -2152,13 +2152,13 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "2387:10:23",
+                            "src": "2318:10:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address_payable",
                               "typeString": "address payable"
                             }
                           },
-                          "src": "2370:27:23",
+                          "src": "2301:27:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -2166,7 +2166,7 @@
                         },
                         "id": 17972,
                         "nodeType": "ExpressionStatement",
-                        "src": "2370:27:23"
+                        "src": "2301:27:23"
                       }
                     ]
                   }
@@ -2195,7 +2195,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 19397,
-                            "src": "2429:3:23",
+                            "src": "2357:3:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
@@ -2209,7 +2209,7 @@
                           "memberName": "sender",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "2429:10:23",
+                          "src": "2357:10:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
@@ -2224,13 +2224,13 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 19349,
-                          "src": "2443:3:23",
+                          "src": "2371:3:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-                        "src": "2429:17:23",
+                        "src": "2357:17:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2246,7 +2246,7 @@
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "2448:45:23",
+                        "src": "2376:45:23",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_34becc511830092491b9ed5bc1b7ad636216495b19fac8d69f13bac5fa3b5329",
@@ -2274,7 +2274,7 @@
                         19401
                       ],
                       "referencedDeclaration": 19401,
-                      "src": "2421:7:23",
+                      "src": "2349:7:23",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
@@ -2288,7 +2288,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "2421:73:23",
+                    "src": "2349:73:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -2296,7 +2296,7 @@
                   },
                   "id": 17982,
                   "nodeType": "ExpressionStatement",
-                  "src": "2421:73:23"
+                  "src": "2349:73:23"
                 }
               ]
             },
@@ -2311,34 +2311,34 @@
               "id": 17964,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2257:2:23"
+              "src": "2191:2:23"
             },
             "returnParameters": {
               "id": 17965,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2267:0:23"
+              "src": "2201:0:23"
             },
             "scope": 17985,
-            "src": "2227:275:23",
+            "src": "2161:268:23",
             "stateMutability": "nonpayable",
             "superFunction": 17929,
             "visibility": "public"
           }
         ],
         "scope": 17986,
-        "src": "1458:1047:23"
+        "src": "1417:1014:23"
       }
     ],
-    "src": "0:2507:23"
+    "src": "0:2432:23"
   },
   "compiler": {
     "name": "solc",
     "version": "0.5.17+commit.d19bba13.Linux.g++"
   },
   "networks": {},
-  "schemaVersion": "3.2.4",
-  "updatedAt": "2020-09-20T17:21:45.823Z",
+  "schemaVersion": "3.2.5",
+  "updatedAt": "2020-09-23T09:15:34.471Z",
   "devdoc": {
     "methods": {
       "_setImplementation(address,bool,bytes)": {

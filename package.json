@@ -1,5 +1,5 @@
 {
-  "name": "yam",
+  "name": "oce",
   "version": "1.0.0",
   "description": "OCE protocol repo",
   "main": "index.js",
@@ -11,7 +11,9 @@
   "dependencies": {
     "dotenv-flow": "^3.2.0",
     "ethers": "^5.0.8",
-    "ganache-core": "^2.11.2"
+    "ganache-cli": "^6.10.2",
+    "ganache-core": "^2.11.2",
+    "solc": "^0.5.17"
   },
   "devDependencies": {
     "@truffle/hdwallet-provider": "^1.0.40",

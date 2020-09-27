@@ -5,7 +5,7 @@ var Web3 = require('web3');
 module.exports = {
   compilers: {
     solc: {
-      version: '0.5.17',
+      version: "0.5.17",
       docker: process.env.DOCKER_COMPILER !== undefined
         ? process.env.DOCKER_COMPILER === 'true' : true,
       parser: 'solcjs',
@@ -46,9 +46,22 @@ module.exports = {
       network_id: '1',
       provider: () => new HDWalletProvider(
         [process.env.DEPLOYER_PRIVATE_KEY],
-        "https://mainnet.infura.io/v3/731a2b3d28e445b7ac56f23507614fea",
+        "https://mainnet.infura.io/v3/fc11c6eb9d044a26b406391c75c1d5f1",
         0,
         1,
+      ),
+      gasPrice: Number(process.env.GAS_PRICE),
+      gas: 8000000,
+      from: process.env.DEPLOYER_ACCOUNT,
+      timeoutBlocks: 800,
+    },
+    ropsten: {
+      network_id: '3',
+      provider: () => new HDWalletProvider(
+          [process.env.DEPLOYER_PRIVATE_KEY],
+          "https://ropsten.infura.io/v3/fc11c6eb9d044a26b406391c75c1d5f1",
+          0,
+          1,
       ),
       gasPrice: Number(process.env.GAS_PRICE),
       gas: 8000000,

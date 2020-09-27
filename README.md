@@ -75,7 +75,7 @@ $ truffle compile
 To run tests, run against a single test package, i.e.:
 ```
 $ sh startBlockchain.sh
-$ truffle migrate --network distribution
+$ truffle migrate --network ropsten
 $ python scripts/clean.py
 $ cd jsLib
 $ jest deployment
