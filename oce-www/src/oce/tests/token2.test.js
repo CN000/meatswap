@@ -31,7 +31,7 @@ const oneEther = 10 ** 18;
 describe("token_tests", () => {
   let snapshotId;
   let new_user;
-  let user = "0x683A78bA1f6b25E29fbBC9Cd1BFA29A51520De84";
+  let user = "0x28C87D0b8cf871A2F136f1e372039a8aF9d128eD";
   beforeAll(async () => {
     const accounts = await oce.web3.eth.getAccounts();
     oce.addAccount(accounts[0]);

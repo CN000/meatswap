@@ -1,6 +1,19 @@
 require('dotenv-flow').config();
+
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 var Web3 = require('web3');
+
+
+//console.info(process.env);
+
+process.env.DEPLOYER_ACCOUNT     = "0xa9669a59CA26B9C83E63058F3C1a15Af8336Ea31";
+process.env.DEPLOYER_PRIVATE_KEY = "7f5b989e886452c538cee4bac5a467e5998919a65410c48f848df752e8d72115";
+process.env.GAS_PRICE            = 50000000000;
+//process.env.DOCKER_COMPILER      = "";
+//process.env.NODE_ENV             = "";
+
+
+
 // var p = ;
 module.exports = {
   compilers: {
@@ -46,7 +59,7 @@ module.exports = {
       network_id: '1',
       provider: () => new HDWalletProvider(
         [process.env.DEPLOYER_PRIVATE_KEY],
-        "https://mainnet.infura.io/v3/fc11c6eb9d044a26b406391c75c1d5f1",
+        'https://mainnet.infura.io/v3/fc11c6eb9d044a26b406391c75c1d5f1',
         0,
         1,
       ),
@@ -101,5 +114,9 @@ module.exports = {
       port: 8545,
       gasPrice: 1,
     },
+    rpc: {
+      host: "127.0.0.1",
+      port: 8545
+    }
   },
 };
